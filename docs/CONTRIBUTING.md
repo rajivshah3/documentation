@@ -31,12 +31,16 @@ We recommend using a code editor that supports markdown files, for example [Visu
 
 ### General rules
 
+These general rules make information easier to understand and translate.
+
 | Rule | Example |
 | :----| :-------|
 | Never use a long word where a short one will do| '~~Utilize~~ **Use** short words'|
 |If it's possible to remove a word, always remove it | 'This method is ~~exactly~~ the same as the previous one'
-| Always use the active voice where possible | '~~The active voice must always be used where possible~~.' 'You must always use the active voice where possible.'
-| Never use a foreign phrase, a scientific word or a jargon word if you can think of an everyday English equivalent | ~~E.g~~ For example
+| Always use the active voice where possible | '~~The active voice must always be used where possible~~.' 'You must always use the active voice where possible'
+| Never use a foreign phrase, a scientific word or a jargon word if you can think of an everyday English equivalent | ~~E.g~~ For example |
+| Place the one-word modifiers 'only' and 'not' immediately in front of whatever they're modifying| 'For security reasons, IOTA addresses should ~~only~~ be spent from **only** once'|
+|Don't use (s) to form plural nouns| 'Select the ~~item(s)~~ **items** that you want to remove'|
 
 Research shows that the above holds true even for very technical audience. See the [GOV.UK style guide](https://www.gov.uk/guidance/content-design/writing-for-gov-uk) for examples.
 
@@ -98,7 +102,7 @@ For example, don't combine the tasks for installing and uninstalling software in
 
 Tasks that are more than 10 steps can be difficult to follow, especially if they're complicated and include substeps.
 
-If you start writing a task that contains more than 10 steps, separate the task into subtasks by using headings.
+If you start writing a task that contains more than 10 steps, separate them into subtasks by using headings.
 
 ### Concept articles
 
@@ -122,23 +126,23 @@ When adding code examples and snippets into an article, make sure you format it 
 
 Our documentation is hosted on GitHub, which is a version control tool. To send us your content, you must use Git or GitHub.
 
-If you already have a GitHub account and Git is set up on your computer, go straight to [Creating a new branch](#creating-a-new-branch).
+If you already have a GitHub account and Git is set up on your computer, go straight to [Create a new branch](#create-a-new-branch).
 
 1. [Create a new GitHub account](https://github.com/) if you don't already have one
 2. [Set up Git](https://help.github.com/articles/set-up-git/)
 3. Go to our [documentation repository](https://github.com/iotaledger/documentation.git) and click **Fork** at the top of the page
 4. Copy your fork to your local machine by doing the following in the command prompt:
     ```cmd
-    git clone https://github.com/{your username}/documentation-markdown
+    git clone https://github.com/{your username}/documentation
     ```
 5. Create a reference to the root repository by doing the following:
 
     ```cmd
-    cd documentation-markdown
+    cd documentation
     git remote add upstream https://github.com/iotaledger/documentation.git
     git fetch upstream
     ```
-Now, your documentation directory will contain all the documentations files.
+Now, your documentation directory will contain all the documentation files.
 
 ### Create a new branch
 
@@ -148,9 +152,10 @@ Branches help make contributing seamless. Make sure each branch only addresses o
 - Grammar edits and spelling corrections on an existing article
 
 1. Open GitBash
+
 2. Do the following:
     ```
-    git pull upstream master:<your branch name>
+    git pull upstream develop:<your branch name>
     git push origin <your branch name>
     ```
 3. To start working on your local copy of the branch, do the following:
@@ -166,29 +171,40 @@ Please follow our [writing guide](#writing-guide) when you write and edit articl
     ```cmd
     git add .
     ```
+    
   **Note:**  you may be asked to set your account's default identity
+  
     ```
     Please tell me who you are
     Run 
     git config --global user.email "you@example.com"
     git config --global user.name "Your Name"
     ```
+    
 2. Commit your changes by doing the following:
+
     ```
     git commit -v -a -m "<Describe the changes you made>"
     ```
+    
   **Note:** Make any additional changes to the same files in subsequent commits as you work. Not all changes need to be in the same commit.
 
 3. Push your changes by doing the following:
+
     ```
     git push origin <your branch name>
     ```
+    
 4. In GitHub, go to the repository that you forked from `iotaledger/documentation`, and click **Pull Request** at the top of the page
-5. Make sure that the base branch is `iotaledger/documentation@master` and the head branch is `<your username>/documentation@<your branch name>`
+
+5. Make sure that the base branch is `iotaledger/documentation@develop` and the head branch is `<your username>/documentation@<your branch name>`
+
 6. Click **Update Commit Range** or **Compare & pull request**
+
 7. Give your pull request a title, and describe all the changes you're making
+
 8. Click **Submit**
 
-Thank you! We will now process your pull request. If there are any edits to make, we will ask you in comments on the pull request you created. 
+Thank you! We will now process your pull request. If there are any edits to make, we will ask you in the comments of the pull request you created. 
 
-You can always just `commit` and `push` new changes like you did before and they will show up in the pull request.
+You can continue working and commit/push new changes like you did before. Any updates will appear in the pending pull request.
