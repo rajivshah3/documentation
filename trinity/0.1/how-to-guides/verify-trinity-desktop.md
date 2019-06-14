@@ -102,10 +102,10 @@ To follow these instructions you need [Xcode Command Line Tools](https://www.ics
 5. Make sure that the following information matches the output of the command (assuming Trinity is in the `/Applications` directory):
 
     * `/Applications/Trinity.app: accepted`
-    * `source=Developer ID`
+    * `source=Notarized Developer ID` (note: for versions earlier than v0.6.0, this may show as `source=Developer ID`)
     * `origin=Developer ID Application: IOTA Stiftung (UG77RJKZHH)`
-    
-    
+
+
 ## Linux operating system
 
 ### Verify the SHA256 hash
