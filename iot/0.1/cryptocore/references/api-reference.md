@@ -133,14 +133,14 @@ element by calling the [`initSecureElement`](#initsecureelement) command.
 
 |**Parameter** |   **Type**  |              **Description**|
 |:----------- |:---------|:-------------------------
-|`key`   |   integer |  An integer between 0 and 7, which specifies the memory address in which to save the seed|
+|`slot`   |   integer |  An integer between 0 and 7, which specifies the memory address in which to save the seed|
 
 ### Example request
 
 ```json
 {
     "command":"generateRandomSeed",
-    "key": 0
+    "slot": 0
 }
 ```
 
@@ -169,7 +169,7 @@ element by calling the [`initSecureElement`](#initsecureelement) command.
 
 ## generateAddress
 
-Generates addresses for the seed in given key of the secure element.
+Generates addresses for the seed in given slot of the secure element.
 
 :::info:
 Before you can call this command, you must initalize the secure
@@ -180,7 +180,7 @@ element by calling the [`initSecureElement`](#initsecureelement) command.
 
 |**Parameter**  |   **Type**  |     **Description**|
 |:------------ |:---------|-------------------------|
-`key`       |integer   |The memory address of the seed from which you want to derive the address
+`slot`       |integer   |The memory address of the seed from which you want to derive the address
 `firstIndex`  | integer    |      The address index from which to start generating addresses
 `number` |    integer  |    The number of addresses to generate, starting from the first index
 `security`   | integer    |     The security level of the address that you want to generate
@@ -190,7 +190,7 @@ element by calling the [`initSecureElement`](#initsecureelement) command.
 ```json
 {
     "command":"generateAddress",
-    "key": 0,
+    "slot": 0,
     "firstIndex": 0,
     "number": 10,
     "security": 2
@@ -216,6 +216,42 @@ element by calling the [`initSecureElement`](#initsecureelement) command.
 {
     "code": 400,
     "command":"generateAddress",
+    "error": "Error message"
+}
+```
+--------------------
+
+## version
+
+Gets the current API version
+
+### Example request
+
+```json
+{
+    "command":"version"
+}
+```
+
+### Response examples
+
+--------------------
+### 200
+```json
+{
+    "version":"0.11rv",
+    "command":"version",
+    "duration":0,
+    "code":200
+}
+```
+---
+### 400
+
+```json
+{
+    "code": 400,
+    "command":"version",
     "error": "Error message"
 }
 ```
@@ -286,7 +322,7 @@ This command can do proof of work for up to eight transactions at once.
 |**Parameter**              |**Type**    |                           **Description**|
 |:-------------------- |:------------------ |:----------------------------------------------------------
 |minWeightMagnitude   |    integer      |  The minimum weight magnitude to use during proof of work
-|trytes     |    array of strings     |       Transaction trytes of the transactions
+|trytes     |    array of strings     |       Transaction trytes
 
 ### Example request
 
@@ -324,14 +360,14 @@ This command can do proof of work for up to eight transactions at once.
 
 ## signTransaction
 
-Signs a single input transaction, using the seed in the given key of the secure element.
+Signs a single input transaction, using the seed in the given slot of the secure element.
 
 :::info:
 Before you can call this command, you must initalize the secure
 element by calling the [`initSecureElement`](#initsecureelement) command, then do the following calculation and add the result to the `auth` parameter:
 
 ```
-keccak384(key+addressIndex+bundleHash+apiKey)
+keccak384(slot+addressIndex+bundleHash+apiKey)
 ```
 :::
 
@@ -339,18 +375,18 @@ keccak384(key+addressIndex+bundleHash+apiKey)
 
 |**Parameter**|      **Type** |                                  **Description**
 |:--------------- |:--------- |:--------------------------------------------------------------------------
-|`key`    |    string        |      The memory address of the seed that owns the address
+|`slot`    |    string        |      The memory address of the seed that owns the address
 |`addressIndex`  |  string       |           The index of the input transaction's address
 |`bundleHash`   |  integer     |        The bundle hash in the transaction's `bundle` field
 |`securityLevel` |  integer   |         The security level of the input transaction's address
-|`auth`       | string  |  The Keccak384 hash of the `key`, `addressIndex`, `bundleHash`, and the API key
+|`auth`       | string  |  The Keccak384 hash of the `slot`, `addressIndex`, `bundleHash`, and the API key
 
 ### Example Request
 
 ```json
 {
     "command":"signTransaction",
-    "key": 0,
+    "slot": 0,
     "addressIndex": 0,
     "bundleHash": "...",
     "securityLevel": 2,

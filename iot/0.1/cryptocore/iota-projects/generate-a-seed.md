@@ -33,12 +33,12 @@ To generate a seed, you can use the `generateRandomSeed` API endpoint.
 3. Enter the following command to generate a seed and store it in the secure memory
 
     ```bash
-    {"command":"generateRandomSeed","key": 0}
+    {"command":"generateRandomSeed","slot": 0}
     ```
 
     :::info:
     The CryptoCore can store up to eight seeds in the secure memory.
-    Here, we store the seed in key index 0. If you want to generate more seeds, you can store them in any key index up to and including 7.
+    Here, we store the seed in slot 0. If you want to generate more seeds, you can store them in any slot up to and including 7.
     :::
 
     You should see the following:
