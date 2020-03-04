@@ -20,17 +20,17 @@ Developers are encouraged to contribute to the [GitHub issues](https://github.co
 ## Prerequisites
 
 To develop on Trinity, your computer must have the following:
-- [An LTS version of Node.js](https://nodejs.org/en/) (we recommend version 10.15.3)
+- [Node.js 10 or 11](https://nodejs.org/dist/)
 - [Yarn](https://yarnpkg.com/lang/en/docs/install/)
 - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 :::info:
-Restart your computer after installing these programs.
+Restart your device after installing these programs.
 :::
 
 ## Install the shared dependencies
 
-1. Clone the Trinity repository
+1. Clone the `trinity-wallet` repository
 
     ```bash
     git clone https://github.com/iotaledger/trinity-wallet.git
@@ -48,25 +48,28 @@ Restart your computer after installing these programs.
     yarn deps:shared
     ```
 
-Now, you can install either the desktop or the mobile development environment.
+Now, depending on which platform you want to build your new feature, install either the desktop or mobile development environment.
 
 ## Install the desktop development environment
 
-If you're using a Windows or Linux operating system, you need to install some extra build tools or packages.
+1\. If you're using a Windows or Linux operating system, you need to install some extra tools and packages.
 
 --------------------
 ### Linux
+
 ```
 sudo apt install build-essential libudev-dev libusb-1.0-0 libusb-1.0-0-dev
 sudo apt install gcc-4.8 g++-4.8 && export CXX=g++-4.8
 ```
 ---
 ### Fedora
+
 ```
 yum install build-essential libudev-dev libusb-1.0-0 libusb-1.0-0-dev libusbx-devel gcc-4.8 g++-4.8 && export CXX=g++-4.8
 ```
 ---
 ### Windows Vista and Windows 7
+
 1. [Install the .NET Framework 4.5.1](https://www.microsoft.com/en-us/download/details.aspx?id=4077)
 
 2. Install Visual C++ build tools and Python 2.7
@@ -85,6 +88,7 @@ yum install build-essential libudev-dev libusb-1.0-0 libusb-1.0-0-dev libusbx-de
     ```
 ---
 ### Other Windows versions
+
 1. Install Visual C++ Build Tools and Python 2.7
 
     ```
@@ -101,25 +105,25 @@ yum install build-essential libudev-dev libusb-1.0-0 libusb-1.0-0-dev libusbx-de
     ```
 --------------------
 
-1. Install the desktop dependencies
+2\. Install the desktop dependencies
 
-    ```bash
-    npm run deps:desktop
-    ```
+```bash
+npm run deps:desktop
+```
 
-2. Change into the `desktop` directory
+3\. Change into the `desktop` directory
 
-    ```bash  
-    cd src/desktop
-    ```
+```bash  
+cd src/desktop
+```
 
-3. Build Trinity desktop
+4\. Build Trinity desktop
 
-    ```bash
-    npm run build
-    ```
+```bash
+npm run build
+```
 
-4. Now, you can either compile an executable file, or run Trinity in development mode
+5\. Now, you can either compile an executable file, or run Trinity in development mode
 
 - If you want an executable file, compile Trinity
 
@@ -145,18 +149,16 @@ yum install build-essential libudev-dev libusb-1.0-0 libusb-1.0-0-dev libusbx-de
 
 1. [Install the React Native dependencies](https://facebook.github.io/react-native/docs/getting-started.html#installing-dependencies-2)
 
-    :::info:
-    If you are targeting iOS and are using Xcode 10+, enable the legacy build system.
-    :::
+2. If you are targeting the iOS operating system, [install CocoaPods](https://cocoapods.org/#install)
 
-2. If you are targeting the iOS operating system, [install CocoaPods](https://cocoapods.org/#install).
+3. If you are targeting the iOS operating system and you are using Xcode 10+, [enable the legacy build system](https://stackoverflow.com/questions/51205221/how-can-i-use-the-legacy-build-system-with-xcode-10s-xcodebuild)
 
-3. Install the mobile dependencies
+4. Install the mobile dependencies
     ```bash
     yarn deps:mobile
     ```
 
-4. Change into the `mobile` directory
+5. Change into the `mobile` directory
     ```bash
     cd src/mobile
     ```
@@ -198,11 +200,11 @@ Now, you can run Trinity and the logger.
 1. Create a new Git branch from the `develop` branch
 
     ```bash
-    git checkout -b feature/my-awesome-new-feature
+    git checkout -b feat/my-awesome-new-feature
     ```
 
 :::info:
-Use a prefix to name your branches (for example, `feature/my-awesome-new-feature` or `bugfix/something-not-working`).
+Use a prefix to name your branches (for example, `feat/my-awesome-new-feature` or `bug/something-not-working`).
 :::
 
 Make all your changes to this branch.
@@ -254,7 +256,7 @@ Your strings will be shown on [Crowdin](https://crowdin.com/project/iota-trinity
 
 ### Submit a pull request
 
-After you've made your changes, create a new pull request on GitHub.
+After you've made your changes, submit a new pull request on GitHub.
 
 Use your branch as the source branch and use the `develop` branch as the target branch.
 
@@ -266,7 +268,7 @@ You may find some of these issues while running Trinity in development mode.
 
 1. Sometimes, we update the dependencies and change the configurations. Try to reinstall the dependencies by doing `npm install` in the `trinity-wallet` directory. Then, build the wallet again by doing `npm run build`
 
-2. The development environment does not clear the user configuration files when you switch between different versions of Trinity. If you have run a different version of Trinity before, remove the configuration files, then try and run Trinity again
+2. When you switch between different versions of Trinity, the development environment does not clear the user configuration files. If you have ever ran a different version of Trinity before, remove the configuration files, then try and run Trinity again
 
 --------------------
 ### macOS
