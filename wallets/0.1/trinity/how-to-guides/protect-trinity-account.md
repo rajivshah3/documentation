@@ -119,6 +119,8 @@ b5ef69424f327e45d21ac5c98f37595054c994ca889d6f339b62ff68ae8deeed
 
 2\. When the file has downloaded, right-click it and go to **CRC SHA** > **SHA-256**
 
+3\. If you don't see the **CRC SHA** menu item, you may need to [install 7-Zip](https://www.7-zip.org/download.html)
+
 If the checksum matches the following image, the tool is safe to use. If the checksum does not match, contact the IOTA Foundation on [Discord](https://discord.iota.org/).
 
 ![Windows SHA-256 checksum](../images/windows-sha256.png)
