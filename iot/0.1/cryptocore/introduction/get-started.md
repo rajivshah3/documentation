@@ -71,10 +71,6 @@ Complete the following steps in an SSH session between your PC and the Raspberry
   ./flash_core.sh
   ```
 
-  :::info:
-  Make sure to turn the Raspberry Pi off and on again from the socket to allow the FPGA to load the core and firmware files from flash memory.
-  :::
-
   If you want the CryptoCore program to be available only until the next reboot, upload it to RAM (takes a couple of seconds):
 
   ```bash
@@ -138,7 +134,7 @@ After setting up the CryptoCore with all the necessary software, you can test it
   You should see something like the following:
 
   ```bash
-  {"version":"0.07rv","command":"version","duration":0,"code":200}
+  {"version":"0.18rv","command":"version","duration":0,"code":200}
   ```
 
 3. Press **Ctrl + a** then **Ctrl + q** to exit the serial terminal
@@ -161,7 +157,7 @@ If you see this message in the serial terminal, make sure that all three red LED
 
 If these lights aren't lit, try [uploading the RISC-V firmware and the CryptoCore program](#step-1-set-up-the-cryptocore-development-environment) again.
 
-## TDO mismatch
+### TDO mismatch
 
 If you see this message while trying to upload the RISC-V firmware and the CryptoCore program to the ICCFPGA, make sure that [jumper J9](#hardware) is connected to the correct pins.
 
