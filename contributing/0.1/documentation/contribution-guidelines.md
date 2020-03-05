@@ -1,34 +1,122 @@
 # Contribute to the developer documentation
 
-We encourage everyone with knowledge of IOTA technology to contribute to our documentation.
+This document describes how to contribute to the IOTA developer documentation.
 
-To contribute new content:
-
-1. See our [open issues](https://github.com/iotaledger/documentation/issues)
-2. Choose something that you'd like to work on, or create a new issue to suggest new content
-3. Comment on the issue to let us know that you'd like to work on it
-4. Start writing your content, following our [style guide](../documentation/style-guide.md)
-
-To make suggestions to existing content:
-
-1. Find the article that you want to change
-2. Start making your changes, following our [style guide](../documentation/style-guide.md)
+We encourage everyone with knowledge of IOTA technology to contribute.
 
 Thanks! :heart:
 
-## Do you have a question?
+<details>
+<summary>Do you have a question :question:</summary>
+<br>
 
 If you have a general or technical question, you can use one of the following resources instead of submitting an issue:
 
 - [**Discord:**](https://discord.iota.org/) For communicating with the developers and community members
 - [**IOTA cafe:**](https://iota.cafe/) For discussing technical questions with the Research Department at the IOTA Foundation
 - [**StackExchange:**](https://iota.stackexchange.com/) For asking technical questions
+</details>
 
-## Get started with your first contribution
+<br>
+
+<details>
+<summary>Ways to contribute :mag:</summary>
+<br>
+
+To contribute, you can:
+
+- Report a mistake
+- Suggest new content
+- Write new content
+- Suggest a new documentation feature
+</details>
+
+<br>
+
+<details>
+<summary>Report a mistake :bug:</summary>
+<br>
+
+This section guides you through reporting a typo or any type of mistake in the content. Following these guidelines helps maintainers and the community verify and and fix mistakes.
+
+### Before reporting a mistake
+
+Please check the following list:
+
+- **Ensure the mistake has not already been reported** by searching on GitHub under [**Issues**](https://github.com/iotaledger/documentation/issues). If the mistake has already been reported **and the issue is still open**, add a comment to the existing issue instead of opening a new one.
+
+:::info:
+If you find a **Closed** issue that seems similar to what you're experiencing, open a new issue and include a link to the original issue in the body of your new one.
+:::
+
+### Reporting a mistake
+
+To report a mistake, [open a new issue](https://github.com/iotaledger/documentation/issues/new), and be sure to include as many details as possible, using the template.
+
+If you also want to fix the mistake, submit a [pull request](#pull-requests) and reference the issue.
+</details>
+
+<details>
+<summary>Suggest new content :bulb:</summary>
+<br>
+
+This section guides you through suggesting new content. Following these guidelines helps maintainers and the community collaborate to find the best possible way forward with your suggestion.
+
+### Before suggesting new content
+
+**Ensure the suggestion has not already been suggested** by searching on GitHub under [**Issues**](https://github.com/iotaledger/documentation/issues).
+
+### Suggesting new content
+
+To suggest new content, talk to the IOTA community and IOTA Foundation members in the #documentation-discussion channel on [Discord](https://discord.iota.org/).
+
+If your suggestion is approved, the team will create an issue to include it.
+</details>
+
+<br>
+
+<details>
+<summary>Write new content :pencil2:</summary>
+<br>
+
+This section guides you through writing content for the documentation portal. Following these guidelines helps give your content the best chance of being approved and merged.
+
+### Before writing
+
+Make sure to discuss your idea in the #documentation-discussion channel on [Discord](https://discord.iota.org/).
+
+Otherwise, your content may not be approved at all.
+
+### Writing new content
+
+To build a new feature, check out a new branch based on the `develop` branch, and be sure to consider the following:
+
+- Choose an appropriate location for your content
+- Follow the [documentation style guide](../documentation/style-guide.md)
+
+</details>
+
+<br>
+
+<details>
+<summary>Suggest a new documentation feature :art:</summary>
+<br>
+
+To suggest new features for the documentation portal:
+
+1. Go to the [`iotaledger/documentation-platform`](https://github.com/iotaledger/documentation-platform/issues) repository
+2. If no existing issues address your suggestion, create a new issue and describe your feature idea
+</details>
+
+<br>
+
+<details>
+<summary>Get started with your first contribution :checkered_flag:</summary>
+<br>
 
 Our documentation is hosted on GitHub, which is a version control tool. To create new content, or suggest changes to existing content, you must use either Git or GitHub.
 
-If you already have a GitHub account and Git is set up on your computer, go straight to [Create a new branch](#create-a-new-branch).
+If you already have a GitHub account and Git is set up on your device, go straight to [Create a new branch](#create-a-new-branch).
 
 1. [Create a new GitHub account](https://github.com/) if you don't already have one
 
@@ -66,22 +154,22 @@ Branches help us to review content by separating your contributions into categor
 
 The following types of contribution are appropriate for a new branch:
 
-- A new article ( a single markdown file)
+- A new article (a single markdown file)
 - Grammar edits and spelling corrections, and any other suggestions for an existing article
 
 1. Open a command-line interface
 
-2. Do the following:
+2. Do the following. Replace the `$BRANCH` placeholder with your own branch name
 
     ```bash
-    git pull upstream develop:<your branch name>
-    git push origin <your branch name>
+    git pull upstream develop:$BRANCH
+    git push origin $BRANCH
     ```
 
 3. To start working on your local copy of the branch, do the following:
 
     ```bash
-    git checkout <your branch name>
+    git checkout $BRANCH
     ```
 
 Please follow our [style guide](../documentation/style-guide.md) when you write and edit articles.
@@ -176,8 +264,55 @@ After writing or editing content and validating it, the next step is to push it 
 
 8. Click **Submit**
 
-:::success:
-Thank you! We will now process your pull request. If there are any edits to make, we will ask you in the comments of the pull request you created.
-::: 
+:::success: Thank you :tada:
+We will now process your pull request. If there are any edits to make, we will ask you in the comments of the pull request you created. 
 
-You can continue working and commit/push new changes like you did before. Any updates will appear in the pending pull request.
+You can continue pushing new changes like you did before. Any updates will appear in the pending pull request.
+:::
+</details>
+
+<br>
+
+<details>
+<summary>Pull requests :mega:</summary>
+<br>
+
+This section guides you through submitting a pull request (PR). Following these guidelines helps give your PR the best chance of being approved and merged.
+
+### Before submitting a pull request
+
+When creating a pull request, please follow these steps to have your contribution considered by the maintainers:
+
+- A pull request should have exactly one concern (for example one feature or one bug). If a PR address more than one concern, it should be split into two or more PRs.
+
+- A pull request can be merged only if it references an open issue
+
+    :::info:
+    Minor changes such as fixing a typo can but do not need an open issue.
+    :::
+
+- All code should be well tested
+
+### Submitting a pull request
+
+The following is a typical workflow for submitting a new pull request:
+
+1. Fork this repository
+2. Create a new branch based on your fork
+3. Commit changes and push them to your fork
+4. Create a pull request against the `develop` branch
+
+If all [status checks](https://help.github.com/articles/about-status-checks/) pass, and the maintainer approves the PR, it will be merged.
+
+:::info:
+Reviewers may ask you to complete additional work, tests, or other changes before your pull request can be approved and merged.
+:::
+</details>
+
+<br>
+
+<details>
+<summary>Code of Conduct :clipboard:</summary>
+<br>
+
+This project and everyone participating in it is governed by the [IOTA Code of Conduct](../iotaledger/code-of-conduct.md).

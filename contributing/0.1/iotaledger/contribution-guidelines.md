@@ -4,17 +4,9 @@ Thanks for taking the time to contribute! :heart:
 
 The following set of guidelines will help you to contribute to the repositories in the [IOTAledger organization](https://github.com/iotaledger) on GitHub.
 
-## Table of contents
-
-[Do you have a question?](#do-you-have-a-question)
-
-[About the IOTAledger organization](#about-the-iotaledger-organization)
-
-[Getting started with your first contribution](#getting-started-with-your-first-contribution)
-
-[Code of Conduct](#code-of-conduct)
-
-## About the IOTAledger organization
+<details>
+<summary>About the IOTAledger organization</summary>
+<br>
 
 IOTA is a large open-source project that's made up of over [100 repositories](https://github.com/iotaledger).
 
@@ -107,13 +99,24 @@ Blueprint demos are example applications of how IOTA technology can be used to s
 - [HyperLedger bridge](https://github.com/iotaledger/HyperledgerFabric-IOTA-Connector) Allows users to connect to trigger transactions on the Tangle, using HyperLedger smart contracts
 
 - [Container tracking](https://github.com/iotaledger/trade-poc) Allows users to track and trace assets in the supply chain
+</details>
 
-## Getting started with your first contribution
+<br>
+
+<details>
+<summary>Getting started with your first contribution</summary>
+<br>
 
 At the root of each IOTAledger repository is a contribution guide with advice for getting started.
 
 If you are unsure where to begin, you can start by looking any `beginner` or `help-wanted` issues.
+</details>
 
-## Code of Conduct
+<br>
+
+<details>
+<summary>Code of Conduct</summary>
+<br>
 
 This project and everyone participating in it is governed by the [IOTA Code of Conduct](../iotaledger/code-of-conduct.md).
+</details>

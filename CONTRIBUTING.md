@@ -1,34 +1,120 @@
 # Contribute to the developer documentation
 
-We encourage everyone with knowledge of IOTA technology to contribute to our documentation.
+This document describes how to contribute to the IOTA developer documentation.
 
-To contribute new content:
-
-1. See our [open issues](https://github.com/iotaledger/documentation/issues)
-2. Choose something that you'd like to work on, or create a new issue to suggest new content
-3. Comment on the issue to let us know that you'd like to work on it
-4. Start writing your content, following our [style guide](#style-guide)
-
-To make suggestions to existing content:
-
-1. Find the article that you want to change
-2. Start making your changes, following our [style guide](#style-guide)
+We encourage everyone with knowledge of IOTA technology to contribute.
 
 Thanks! :heart:
 
-## Do you have a question?
+<details>
+<summary>Do you have a question :question:</summary>
+<br>
 
 If you have a general or technical question, you can use one of the following resources instead of submitting an issue:
 
 - [**Discord:**](https://discord.iota.org/) For communicating with the developers and community members
 - [**IOTA cafe:**](https://iota.cafe/) For discussing technical questions with the Research Department at the IOTA Foundation
 - [**StackExchange:**](https://iota.stackexchange.com/) For asking technical questions
+</details>
 
-## Get started with your first contribution
+<br>
+
+<details>
+<summary>Ways to contribute :mag:</summary>
+<br>
+
+To contribute, you can:
+
+- Report a mistake
+- Suggest new content
+- Write new content
+- Suggest a new documentation feature
+</details>
+
+<br>
+
+<details>
+<summary>Report a mistake :bug:</summary>
+<br>
+
+This section guides you through reporting a typo or any type of mistake in the content. Following these guidelines helps maintainers and the community verify and and fix mistakes.
+
+### Before reporting a mistake
+
+Please check the following list:
+
+- **Ensure the mistake has not already been reported** by searching on GitHub under [**Issues**](https://github.com/iotaledger/documentation/issues). If the mistake has already been reported **and the issue is still open**, add a comment to the existing issue instead of opening a new one.
+
+**Note:** If you find a **Closed** issue that seems similar to what you're experiencing, open a new issue and include a link to the original issue in the body of your new one.
+
+### Reporting a mistake
+
+To report a mistake, [open a new issue](https://github.com/iotaledger/documentation/issues/new), and be sure to include as many details as possible, using the template.
+
+If you also want to fix the mistake, submit a [pull request](#pull-requests) and reference the issue.
+</details>
+
+<details>
+<summary>Suggest new content :bulb:</summary>
+<br>
+
+This section guides you through suggesting new content. Following these guidelines helps maintainers and the community collaborate to find the best possible way forward with your suggestion.
+
+### Before suggesting new content
+
+**Ensure the suggestion has not already been suggested** by searching on GitHub under [**Issues**](https://github.com/iotaledger/documentation/issues).
+
+### Suggesting new content
+
+To suggest new content, talk to the IOTA community and IOTA Foundation members in the #documentation-discussion channel on [Discord](https://discord.iota.org/).
+
+If your suggestion is approved, the team will create an issue to include it.
+</details>
+
+<br>
+
+<details>
+<summary>Write new content :pencil2:</summary>
+<br>
+
+This section guides you through writing content for the documentation portal. Following these guidelines helps give your content the best chance of being approved and merged.
+
+### Before writing
+
+Make sure to discuss your idea in the #documentation-discussion channel on [Discord](https://discord.iota.org/).
+
+Otherwise, your content may not be approved at all.
+
+### Writing new content
+
+To build a new feature, check out a new branch based on the `develop` branch, and be sure to consider the following:
+
+- Choose an appropriate location for your content
+- Follow the [documentation style guide](STYLEGUIDE.md)
+
+</details>
+
+<br>
+
+<details>
+<summary>Suggest a new documentation feature :art:</summary>
+<br>
+
+To suggest new features for the documentation portal:
+
+1. Go to the [`iotaledger/documentation-platform`](https://github.com/iotaledger/documentation-platform/issues) repository
+2. If no existing issues address your suggestion, create a new issue and describe your feature idea
+</details>
+
+<br>
+
+<details>
+<summary>Get started with your first contribution :checkered_flag:</summary>
+<br>
 
 Our documentation is hosted on GitHub, which is a version control tool. To create new content, or suggest changes to existing content, you must use either Git or GitHub.
 
-If you already have a GitHub account and Git is set up on your computer, go straight to [Create a new branch](#create-a-new-branch).
+If you already have a GitHub account and Git is set up on your device, go straight to [Create a new branch](#create-a-new-branch).
 
 1. [Create a new GitHub account](https://github.com/) if you don't already have one
 
@@ -66,25 +152,25 @@ Branches help us to review content by separating your contributions into categor
 
 The following types of contribution are appropriate for a new branch:
 
-- A new article ( a single markdown file)
+- A new article (a single markdown file)
 - Grammar edits and spelling corrections, and any other suggestions for an existing article
 
 1. Open a command-line interface
 
-2. Do the following:
+2. Do the following. Replace the `$BRANCH` placeholder with your own branch name
 
     ```bash
-    git pull upstream develop:<your branch name>
-    git push origin <your branch name>
+    git pull upstream develop:$BRANCH
+    git push origin $BRANCH
     ```
 
 3. To start working on your local copy of the branch, do the following:
 
     ```bash
-    git checkout <your branch name>
+    git checkout $BRANCH
     ```
 
-Please follow our [style guide](#style-guide) when you write and edit articles.
+Please follow our [style guide](STYLEGUIDE.md) when you write and edit articles.
 
 ### Validate your content
 
@@ -176,317 +262,49 @@ After writing or editing content and validating it, the next step is to push it 
 
 8. Click **Submit**
 
-:::success:
-Thank you! We will now process your pull request. If there are any edits to make, we will ask you in the comments of the pull request you created.
-::: 
+Thank you :tada: We will now process your pull request. If there are any edits to make, we will ask you in the comments of the pull request you created. 
 
-You can continue working and commit/push new changes like you did before. Any updates will appear in the pending pull request.
+You can continue pushing new changes like you did before. Any updates will appear in the pending pull request.
+</details>
 
-## Style guide
+<br>
 
-If you are creating or editing an article, please follow our style guide to help us do the following:
+<details>
+<summary>Pull requests :mega:</summary>
+<br>
 
-- Create and maintain a consistent tone of voice 
-- Offer documentation in a standard format
-- Make our documentation straightforward to read for non-native English readers
-- Make sure that our documentation educates our readers
+This section guides you through submitting a pull request (PR). Following these guidelines helps give your PR the best chance of being approved and merged.
 
-If you have a question about writing that we don't cover in this guide, use the [Google style guide](https://developers.google.com/style/).
+### Before submitting a pull request
 
-### Markdown
+When creating a pull request, please follow these steps to have your contribution considered by the maintainers:
 
-We use an enhanced version of markdown for our documentation. Please refer to these [tips](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) if you haven't used markdown before.
+- A pull request should have exactly one concern (for example one feature or one bug). If a PR address more than one concern, it should be split into two or more PRs.
 
-#### Tabbed controls
+- A pull request can be merged only if it references an open issue
 
-Tabbed controls are useful for creating content for different users or use cases such as multiple code samples.
+    **Note:** Minor changes such as fixing a typo can but do not need an open issue.
 
-To create tabbed code samples, use the following syntax:
+- All code should be well tested
 
-```markdown
---------------------
-### Tab Page 1
-This is the content in tab page 1.
----
-### Tab Page 2
-This is the content in tab page 2.
---------------------
-```
+### Submitting a pull request
 
-:::info:
-The h3 heading is the tab label.
-:::
+The following is a typical workflow for submitting a new pull request:
 
-![Tabbed Control](/contribution/0.1/images/tabbed-control.png)
+1. Fork this repository
+2. Create a new branch based on your fork
+3. Commit changes and push them to your fork
+4. Create a pull request against the `develop` branch
 
-#### Cards
+If all [status checks](https://help.github.com/articles/about-status-checks/) pass, and the maintainer approves the PR, it will be merged.
 
-Cards are useful for project landing pages, where you need to list more than one type or category.
+**Note:** Reviewers may ask you to complete additional work, tests, or other changes before your pull request can be approved and merged.
+</details>
 
-To create a card, use the following syntax:
+<br>
 
-```markdown
--------------------------
-Image
-## Title with link to file
-Data silos make it difficult to buy and sell data among different data points. To overcome this challenge, the Data Marketplace uses IOTA MAM channels to open up the data silos and allow users to make micropayments of IOTA tokens to the data owners in exchange for data.
--------------------------
-```
+<details>
+<summary>Code of Conduct :clipboard:</summary>
+<br>
 
-![Cards](/contribution/0.1/images/card.png)
-
-#### Colored headings
-
-Colored headings are useful for showing a clearer distinction between to different headings.
-
-To create a colored heading, use the following syntax:
-
-```markdown
-### **OFFICIAL SUPPORT** ###
-
-### __COMMUNITY SUPPORT__ ###
-```
-
-![Heading Label](/contribution/0.1/images/heading-label-primary.png)
-
-![Heading Label](/contribution/0.1/images/heading-label-secondary.png)
-
-#### Colored bullets
-
-Colored bullets are useful for listing content under colored headings.
-
-To create a colored bullet, use the following syntax:
-
-```markdown
----------------
-#### **JavaScript Library** ####
-Link to file
-
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui.
----
-#### __Go Library__ ####
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui.
----
-#### Python Library ####
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui.
----------------
-```
-
-![Project Topics](/contribution/0.1/images/project-topics.png)
-
-#### Emoji
-
-Using an emoji in your content can help to engage the reader.
-
-:::warning:
-Certain emoji have different meanings in different cultures. For example, in Brazil the OK symbol :ok_hand: is considered rude, and in the Middle East, so is the thumbs-up symbol :+1:.
-:::
-
-To create an emoji, use the following syntax:
-
-```markdown
-:smile:
-:laughing:
-```
-
-![Emojis](/contribution/0.1/images/emojis.png)
-
-For a list of available emoji, see this JSON file: [https://github.com/muan/emojilib/blob/master/emojis.json](https://github.com/muan/emojilib/blob/master/emojis.json)
-
-#### Google maps
-
-A Google map can be embedded in your content by surrounding it with `¬¬¬` fencing. You can then specify the type as `[map]` and provide the JSON configuration for the object as follows:
-
-```markdown
-¬¬¬
-[map]
-{
-    "zoom":14,
-    "center": {
-        "lat": 52.5294498,
-        "lng": 13.412903
-    },
-    "markers": [
-        {
-            "name": "IOTA Foundation",
-            "lat": 52.5294498,
-            "lng": 13.412903
-        }
-    ]
-}
-¬¬¬
-```
-
-![Google Maps for IOTA](/contribution/0.1/images/maps.png)
-
-#### Data feeds
-
-A feed can be embedded in your content by surrounding it with `¬¬¬` fencing. You can then specify the type as `[feed]` and provide the JSON configuration for the object as follows:
-
-```markdown
-¬¬¬
-[feed]
-{
-    "displayType": "event",
-    "context": "training"
-}
-¬¬¬
-```
-
-The `displayType` field specifies how the content will be rendered on the page and the `context` field is used to determine where the data is retrieved from using the documentation api e.g. `https://docs-api.iota.org/feed/training`. The feeds list supports paging and will show it when necessary. The table of contents for the page is dynamically generated from any h2 headers in the rendered items.
-
-![Event Feed](/contribution/0.1/images/feed.png)
-
-### Message boxes
-
-Message boxes are useful for bringing attention to certain information.
-
-To create a message box, use the following syntax:
-
-```markdown
-:::success:A Success
-This is the content,
-on multiple lines :tada:
-:::
-
-:::warning:Just A Warning Title:::
-
-:::info:
-Some multiline content only.
-This is line 2.
-:::
-
-:::danger:Danger Danger
-Will Robinson :bomb:
-:::
-```
-
-![Message Boxes](/contribution/0.1/images/message-boxes.png)
-
-:::info:
-Use an `info` box to bring attention to informations. For example, you may want to give the reader a hint. Without an `info` box, a user may lose precious time and become frustrated while trying to understand why something is not working.
-:::
-
-:::success:
-Use a `success` box at the end of a task to let the reader know that they've completed it.
-:::
-
-:::warning:
-Use a `warning` box more serious information than an `info` box to let the reader know important information.
-:::
-
-:::danger:
-Use a `danger` box to warn the reader that an action may lead to lost funds or system failure.
-:::
-
-### Writing tools
-
-We recommend using a code editor that supports markdown files, for example [Visual Studio Code](https://code.visualstudio.com/) with the [markdown Lint extension](https://github.com/DavidAnson/vscode-markdownlint).
-
-### General rules
-
-These general rules make information easier to understand and translate.
-
-| **Rule** | **Example** |
-| :----| :-------|
-| Never use a long word where a short one will do| '~~Utilize~~ **Use** short words'|
-|If it's possible to remove a word, always remove it | 'This method is ~~exactly~~ the same as the previous one'
-| Always use the active voice where possible | '~~The active voice must always be used where possible~~.' 'You must always use the active voice where possible'
-| Never use a foreign phrase, a scientific word or a jargon word if you can think of an everyday English equivalent | ~~E.g~~ For example |
-| Place the one-word modifiers 'only' and 'not' immediately in front of whatever they're modifying| 'For security reasons, IOTA addresses should ~~only~~ be withdrawn from **only** once'|
-|Don't use (s) to form plural nouns| 'Select the ~~item(s)~~ **items** that you want to remove'|
-
-Research shows that the above holds true even for very technical audience. See the [GOV.UK style guide](https://www.gov.uk/guidance/content-design/writing-for-gov-uk) for examples.
-
-### UK English or US English?
-
-We always write in US English.
-
-### Punctuation
-
-- Always use a capital letter after colons
-- Always use an oxford comma (comma before and in a list, for example 'The Mainnet, Devnet, and Spamnet')
-- Don't use periods at the end of single sentence lists. Use periods only when list items consists of more than one sentence
-
-### Article titles
-
-| **Rule** | **Example** |
-| :----| :-------|
-|Use sentence case for titles. Do not use title case.|'The distributed ledger', not 'The Distributed Ledger'|
-|Article titles in the 'Concepts' sections should always be nouns|'Tip selection' not 'What is tip selection?' or 'Understanding tip selection'|
-|Article titles in the 'How-to guides' section should always start with an infinitive| 'Run the IRI' not 'Running the IRI'|
-|Article titles in the 'References' section should always be plural nouns| 'IRI configuration options' not 'IRI configuration' or 'Configuring the IRI'|
-
-### First paragraph
-
-Always embolden the first paragraph of an article. This paragraph should explain the main purpose or point of the article in as few words as possible.
-
-Make sure you answer the following questions:
-- What is the article about?
-- Why do users care about or need the information in the article?
-
-### How-to guides
-
-A how-to guide is an article that helps users achieve a task.
-
-When you write how-to guides, follow these general guidelines:
-
-- [Write one task per article](#write-one-task-per-article)
-- [Create subtasks to organize long how-to guides](#create-subtasks-to-organize-long-how-to-guides)
-
-Each how-to guide should explain not only **how** to perform the scenario, but also **why** a user would want to perform the scenario. What does it achieve? Why is it needed?
-
-A brief introduction in the form of a **what** is the scenario about. A **when** section to put the scenario in context with other scenarios. For example, a scenario on **Running IRI** should mention that you need to **Download and install IRI** first.
-
-The general flow of a how-to guide would be:
-
-1. A short description (overview of the task, benefits and importance of the task, brief conceptual information, and links to longer conceptual information, if necessary)
-3. Prerequisites (things that the user must have or do before they can complete the task)
-4. Steps (how to do the task)
-5. Summary of what the user has accomplished
-
-#### Write one task per article
-
-When a how-to guide contains one task, it's easier to manage, organize, and reuse to help users find specific tasks when they need them.
-
-For example, don't combine the tasks for installing and uninstalling software in a single article. Users typically won't need these tasks at the same time.
-
-#### Create subtasks to organize long how-to guides
-
-Tasks that are more than 10 steps can be difficult to follow, especially if they're complicated and include substeps.
-
-If you start writing a task that contains more than 10 steps, separate them into subtasks by using headings.
-
-### Concept articles
-
-Concept articles can be written to do any of the following:
-
-- Describe a system, product, or solution
-- Introduce tools and technology
-- Explain features, components, characteristics, restrictions, and capabilities
-- Define terms in more details than you would find in a glossary
-- Describe benefits or help users to make choices between options
-
-You should write concept articles to support tasks and user goals.
-
-Concept articles must not include task information or reference information.
-
-### Code formatting
-
-When adding code examples and snippets into an article, make sure you format it accordingly and add language identifiers for correct code highlighting. See [Creating and highlighting code blocks](https://help.github.com/articles/creating-and-highlighting-code-blocks/) for more information.
-
-#### Bash
-
-Bash code blocks shall not contain the path.
-
-Instead of:
-
-```bash
-user@hostname:~/tmp$ mkdir whatever
-```
-
-Use a standalone statement:
-
-```bash
-mkdir whatever
-```
+This project and everyone participating in it is governed by the [IOTA Code of Conduct](CODE_OF_CONDUCT.md).
