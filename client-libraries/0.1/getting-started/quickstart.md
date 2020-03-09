@@ -3,6 +3,9 @@
 **To start your IOTA development journey, complete a quickstart guide in one of our official languages.**
 
 ---------------
+#### **C** ####
+[Link](root://client-libraries/0.1/getting-started/c-quickstart.md)
+---
 #### **Go** ####
 [Link](root://client-libraries/0.1/getting-started/go-quickstart.md)
 ---
