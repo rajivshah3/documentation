@@ -367,7 +367,7 @@ Before you can call this command, you must initalize the secure
 element by calling the [`initSecureElement`](#initsecureelement) command, then do the following calculation and add the result to the `auth` parameter:
 
 ```
-keccak384(slot+addressIndex+bundleHash+apiKey)
+hexadecimal(keccak384(slot+keyIndex+bundleHash+apiKey))
 ```
 :::
 
@@ -379,13 +379,13 @@ keccak384(slot+addressIndex+bundleHash+apiKey)
 |`keyIndex`  |  string       |           The index of the input transaction's address
 |`bundleHash`   |  integer     |        The bundle hash in the transaction's `bundle` field
 |`security` |  integer   |         The security level of the input transaction's address
-|`auth`       | string  |  The Keccak384 hash of the `slot`, `keyIndex`, `bundleHash`, and the API key
+|`auth`       | string  |  A hexadecimal encoding of the Keccak384 hash of the `slot`, `keyIndex`, and `bundleHash` arguments, and the API key
 
 ### Example Request
 
 ```json
 {
-    "command":"signTransaction",
+    "command":"signBundleHash",
     "slot": 0,
     "keyIndex": 0,
     "bundleHash": "...",
@@ -401,7 +401,7 @@ keccak384(slot+addressIndex+bundleHash+apiKey)
 ```json
 {
     "code": 200,
-    "command":"signTransaction",
+    "command":"signBundleHash",
     "trytes": ["....","....",...],
     "duration": 1800
 }
@@ -412,7 +412,7 @@ keccak384(slot+addressIndex+bundleHash+apiKey)
 ```json
 {
     "code": 400,
-    "command":"signTransaction",
+    "command":"signBundleHash",
     "error": "Error message"
 }
 ```
@@ -592,7 +592,7 @@ base64(keccak384(page+data+apiKey))
 |:----------- |:--------- |:-----------------------------------------------------------
 |`page`      |integer|  page number in QSPI flash. Valid values are between 0 and 4095.
 |`data`     | string  | 4 kB data in base64 encoding
-|`auth`  |    string |  Checksum and authentication
+|`auth`  |    string |  A base64 encoding of the Keccak384 hash of the `page` and `data` arguments, and the API key
                         
 
 ```json

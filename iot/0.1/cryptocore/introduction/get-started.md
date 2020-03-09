@@ -36,9 +36,7 @@ To complete this guide, you need the following:
 
 ## Step 1. Set up the CryptoCore development environment
 
-Before you can start using the CryptoCore, you need to install the necessary tools on your Raspberry Pi.
-
-Complete the following steps in an SSH session between your PC and the Raspberry Pi.
+In this step, you install the necessary tools on your Raspberry Pi to be able to upload the required code to the CryptoCore.
 
 1. Install `git`
 
@@ -64,21 +62,21 @@ Complete the following steps in an SSH session between your PC and the Raspberry
 
 4. Upload the RISC-V firmware and the CryptoCore program to the ICCFPGA
 
-  If you want the CryptoCore program to be available after a reboot, flash it into the QSPI flash memory (takes up to 7 minutes):
+  If you want the CryptoCore program to be available after a reboot, flash it into the QSPI flash memory. This process takes up to 7 minutes and requires a reboot.
 
   ```bash
   cd ~/iccfpga-utils/raspberry_scripts
   ./flash_core.sh
   ```
 
-  If you want the CryptoCore program to be available only until the next reboot, upload it to RAM (takes a couple of seconds):
+  If you want the CryptoCore program to be available only until the next reboot, upload it to RAM. This process takes a couple of seconds.
 
   ```bash
   cd ~/iccfpga-utils/raspberry_scripts
   ./upload_core.sh
   ```
 
-After uploading the RISC-V firmware and the CryptoCore program to the ICCFPGA, you should see three red LEDs on it:
+After uploading the RISC-V firmware and the CryptoCore program to the ICCFPGA, you should see three red LEDs:
 
 - **1:** Power
 - **2:** Indicates that the ICCFPGA has a valid CryptoCore program
@@ -86,9 +84,9 @@ After uploading the RISC-V firmware and the CryptoCore program to the ICCFPGA, y
 
 ![CryptoCore LEDs](../images/cryptocore-three-led.jpg)
 
-## Step 2. Test the CryptoCore
+## Step 2. Test the API
 
-After setting up the CryptoCore with all the necessary software, you can test it by running the 'hello world' program.
+In this step, you test the CryptoCore program by getting the current program version from the API.
 
 1. Open a serial terminal
 
@@ -134,7 +132,7 @@ After setting up the CryptoCore with all the necessary software, you can test it
   You should see something like the following:
 
   ```bash
-  {"version":"0.18rv","command":"version","duration":0,"code":200}
+  {"version":"0.21rv","command":"version","duration":0,"code":200}
   ```
 
 3. Press **Ctrl + a** then **Ctrl + q** to exit the serial terminal
