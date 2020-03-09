@@ -46,7 +46,9 @@ Never share your seed or Ledger phrases with anyone.
 
 No. The [Coordinator](root://getting-started/0.1/network/the-coordinator.md) cannot transfer IOTA tokens.
 
-However, to protect certain users' IOTA tokens, the IOTA Foundation may temporarily transfer any that may be deemed ‘at risk’ to another seed for safekeeping. This process would take place during a global snapshot, which would be validated by the IOTA community's nodes.
+However, the IOTA Foundation may consult with community node owners to discuss the option of a global snapshot.
+
+During a global snapshot, and pending node owner validation, at-risk IOTA tokens would be transferred to a secure seed until their owners can verify their identities.
 
 ## I use the IOTA light wallet, do I have to do anything? Will it still work after the Coordinator is restarted?
 
@@ -78,12 +80,14 @@ If more than one person uses the Seed Migration Tool to migrate the same seed, t
 
 ## What is the Identity Verification Process?
 
-To protect certain users' IOTA tokens, the IOTA Foundation may temporarily transfer any that may be deemed ‘at risk’ to another seed for safekeeping. This process would take place during a global snapshot, which would be validated by the IOTA community's nodes.
+To protect at-risk IOTA tokens, the IOTA Foundation may consult with community node owners to discuss the option of a global snapshot.
+
+During a global snapshot, and pending node owner validation, at-risk IOTA tokens would be transferred to a secure seed until their owners can verify their identities
 
 At-risk IOTA tokens include:
 
 - Those that are known to have been stolen during the attack
-- Those that belong to a seed that was entered into the Seed Migration Tool by two or more people
+- Those that belong to a seed that was migrated by two or more people
 
 If you own any at-risk IOTA tokens, you may need to complete a KYC (know your customer) process with a third party to reclaim them.
 
