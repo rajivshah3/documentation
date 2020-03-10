@@ -233,7 +233,8 @@ In this step, you use the CryptoCore API to do proof of work for the eight trans
     timestamp=$(date +%s%3N)
 
     # Make sure a directory exists in which to save the transaction trytes
-    saved_transaction_directory="/home/pi/cryptocore-scripts/my-transactions"
+    dir="$( dirname $( readlink -f $0 ) )"
+    saved_transaction_directory="$dir/../my-transactions"
 
     if [ ! -d $saved_transaction_directory ]; then
         mkdir $saved_transaction_directory
@@ -241,9 +242,9 @@ In this step, you use the CryptoCore API to do proof of work for the eight trans
 
     echo "Doing proof of work on CryptoCore"
 
-    template='{"command":"attachToTangle","trunkTransaction": %s,"branchTransaction":%s,"minWeightMagnitude":%s,"timestamp":%s,"trytes":%s}'
+    template='{"command":"attachToTangle","trunkTransaction": %s,"branchTransaction":%s,"minWeightMagnitude":%d,"timestamp":%s,"trytes":%s}'
 
-    json_string=$(printf "$template" $trunk $branch $MWM  $timestamp $trytes)
+    json_string=$(printf "$template" $trunk $branch $MWM $timestamp $trytes)
 
     node ../node-scripts/serial.js "$json_string" > $saved_transaction_directory/attached_trytes.txt
     ```

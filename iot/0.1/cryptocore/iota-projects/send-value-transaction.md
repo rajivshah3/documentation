@@ -331,7 +331,8 @@ In this step, you write a bash script that signs the bundle hash.
     fi
 
     # Make sure a directory exists in which you can save unfinished or pending transactions
-    saved_transaction_directory="/home/pi/cryptocore-scripts/my-transactions"
+    dir="$( dirname $( readlink -f $0 ) )"
+    saved_transaction_directory="$dir/../my-transactions"
 
     if [ ! -d $saved_transaction_directory ]; then
         mkdir $saved_transaction_directory

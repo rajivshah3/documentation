@@ -105,30 +105,20 @@ In this step, you write the `create_tx.sh` script that prompts the user for the 
     If the user does not enter a word beginning with 'y', this code sets the address to all 9s.
     :::
 
-6. Ask the user for a branch and trunk transaction hash
+6. Get two tip transaction hashes from the Tangle by executing the `get-branch-and-trunk.js` script
 
     ```bash
-    read -p "Please enter a trunk transaction hash to use to attach this transaction to the Tangle: " trunk
-
-    while [[ ! $trunk =~ ^[A-Z9]*{81}$ ]]; do
-            echo "Hash invalid. Transaction hashes much contain 81 trytes."
-            read -p "Please enter a trunk transaction hash: " trunk
-    done
-
-
-    read -p "Please enter a branch transaction hash to use to attach this transaction to the Tangle: " branch
-
-    while [[ ! $branch =~ ^[A-Z9]*{81}$ ]]; do
-            echo "Hash invalid. Transaction hashes much contain 81 trytes."
-            read -p "Please enter a branch transaction hash: " branch
-    done
+    # Execute the get-branch-and-trunk.js script to get two tip transactions
+    trunk_and_branch=$(node ../node-scripts/get-branch-and-trunk.js $MWM)
+    trunk=$(echo "$trunk_and_branch" | jq '.trunkTransaction'| tr -d '"\n' )
+    branch=$(echo "$trunk_and_branch" | jq '.branchTransaction'| tr -d '"\n' )
     ```
 
     :::info:
-    These hashes will be approved by your transaction when they are attached to the [Tangle](root://getting-started/0.1/network/the-tangle.md). 
-    :::
+    The `get-branch-and-trunk.js` file uses the [`getTransactionsToApprove()`](https://github.com/iotaledger/iota.js/tree/next/packages/core#module_core.getTransactionsToApprove) method to get two tip transaction from the Tangle.
 
-    The `while` loops check that the transaction hashes are 81 trytes long. If the trytes are too long or too short, the user is promoted to enter valid ones.
+    You can find the code for this file on [GitHub](https://github.com/iota-community/cryptocore-scripts/blob/master/node-scripts/get-branch-and-trunk.js).
+    :::
 
 7. Create a variable in which to store the current Unix epoch in seconds
 
@@ -142,17 +132,18 @@ In this step, you write the `create_tx.sh` script that prompts the user for the 
 
     ```bash
     # Make sure a directory exists in which you can save unfinished or pending transactions
-    saved_transaction_directory="/home/pi/cryptocore-scripts/my-transactions"
+    dir="$( dirname $( readlink -f $0 ) )"
+    saved_transaction_directory="$dir/../my-transactions"
 
     if [ ! -d $saved_transaction_directory ]; then
         mkdir $saved_transaction_directory
     fi
 
-    template='{"command":"jsonDataTX","trunkTransaction":"%s","branchTransaction":"%s","minWeightMagnitude":%s,"tag":"CRYPTOCORE99999999999999999", "address":"%s", "timestamp":%s,"data": { "message": "HELLO WORLD FROM CRYPTOCORE" }}'
+    template='{"command":"jsonDataTX","trunkTransaction":"%s","branchTransaction":"%s","minWeightMagnitude":%d,"tag":"CRYPTOCORE99999999999999999", "address":"%s", "timestamp":%s,"data": { "message": "HELLO WORLD FROM CRYPTOCORE" }}'
 
     json_string=$(printf "$template" "$trunk" "$branch" $MWM "$address" $timestamp)
 
-    node ../node-scripts/serial.js "$json_string" | jq ".trytes[]" | tr -d '"' | tr -d '\n' > $saved_transaction_directory/zero_value_transaction.txt
+    node ../node-scripts/serial.js "$json_string" | jq ".trytes[]" | tr -d '"\n' > $saved_transaction_directory/zero_value_transaction.txt
     ```
 
     :::info:
