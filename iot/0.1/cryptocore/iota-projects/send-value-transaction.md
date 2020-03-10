@@ -1,16 +1,16 @@
 # Sign a bundle with the CryptoCore
 
-**In this guide, you use the CryptoCore UART API to sign a bundle, do proof of work, and send attach the transactions to the Tangle.**
+**In this guide, you use the CryptoCore UART API to sign a bundle.**
 
 This guide walks you through the process of writing the following scripts:
 
 - **`create-unsigned-bundle.js`:** This script creates an unsigned bundle
 - **`generate-auth.js`:** This script generates a hexadecimal-encoded hash to authenticate the `signBundleHash` command on the CryptoCore
-- **`send_value_tx.sh`:** This scripts uses the CryptoCore to sign the bundle and send attach the transactions to th Tangle
+- **`send_value_tx.sh`:** This scripts uses the CryptoCore to sign the bundle and attach the transactions to the Tangle
 - **`add-signature-to-bundle.js`:** This script adds the signature to the bundle
 
 :::info:
-These code samples are also hosted on [GitHub](https://github.com/JakeSCahill/cryptocore-scripts).
+These code samples are also hosted on [GitHub](https://github.com/iota-community/cryptocore-scripts).
 :::
 
 :::warning:
@@ -60,22 +60,22 @@ In this step, you write a script that uses the Javascript client library to crea
 2. Get the arguments that are passed to the script
 
     ```js
-    // Get the first argument that was passed to this script
-    // This should be a minimum weight magnitude (14 or 9)
+    // This argument should be a minimum weight magnitude (14 or 9)
     const network = process.argv[2];
 
-    // Get the second argument that was passed to this script
-    // This should be an 81 tryte address from which to withdraw IOTA tokens
+    // This argument should be an 81 tryte address from which to withdraw IOTA tokens
     const inputAddress = process.argv[3];
     const inputAddressTrits = Converter.trytesToTrits(inputAddress);
 
-    // Get the third argument that was passed to this script
-    // This should be an 81 tryte address in which to deposit the IOTA tokens from the input address
+    // This argument should be an 81 tryte address in which to deposit the IOTA tokens from the input address
     const outputAddressTrits = Converter.trytesToTrits(process.argv[4]);
 
-    // Get the fourth argument that was passed to this script
-    // This should be a security level between 1 and 3
+    // This argument should be a security level between 1 and 3
     const securityLevel = parseInt(process.argv[5]);
+
+    // This argument should be the path to which you can save unfinished or pending transactions
+    const savedTransactionDirectory = process.argv[6];
+    ```
 
 2. Use the first argument to connect to a node on either the Devnet or the Mainnet
 
@@ -163,7 +163,7 @@ In this step, you write a script that uses the Javascript client library to crea
         value: balances[0]
         }
 
-        // Create an unsigned bundle and save it to a binary file
+        // Call the function to create an unsigned bundle and save it to a binary file
         createUnsignedBundle(parameters);
         }
     })
@@ -192,17 +192,15 @@ In this step, you write a script that generates the `auth` parameter for the [`s
 3. Get the arguments that are passed to the script
 
     ```js
-    // Get the first argument that was passed to this script
-    // This should be a slot number between 0 and 7
+    // This argument should be a slot number between 0 and 7
     const slot = process.argv[2];
 
-    // Get the second argument that was passed to this script
-    // This should be a keyIndex
+    // This argument should be a keyIndex
     const keyIndex = process.argv[3];
 
-    // Get the third argument that was passed to this script
-    // This should be an unsigned bundle hash
+    // This argument should be an unsigned bundle hash
     const bundleHash = process.argv[4];
+    ```
 
 4. Define a function to convert the integer arguments to bytes
 
@@ -214,7 +212,7 @@ In this step, you write a script that generates the `auth` parameter for the [`s
     ```
 
     :::info:
-    The CryptoJS library that will generate the hash requires all arguments to be converted to a Word Array from bytes.
+    The CryptoJS library, which will generate the hash, requires all arguments to be converted to a Word Array from bytes.
     :::
     
 5. Define a function to convert bytes to a Word Array
@@ -249,19 +247,22 @@ In this step, you write a script that generates the `auth` parameter for the [`s
 7. Convert the arguments to a Word Array, then use the CryptoJS library to hash the arguments and print the hexadecimal-encoded string to the console
 
     ```js
+    // Initialize a Keccak 384 hash object
+    const BIT_HASH_LENGTH = 384;
     k = CryptoJS.algo.SHA3.create()
     k.init({
     outputLength: BIT_HASH_LENGTH,
     })
     
-    // Convert the bytes in the buffer array to a Word Array
+    // Convert the bytes in the buffer array to a Word Array and add them to the hash object
     for (let b of buffer) {
             k.update(byteArrayToWordArray(b))
     }
 
+    // Generate the hash
     hash = k.finalize();
 
-    // Print the hexadecimal-encoded hash
+    // Print the hexadecimal-encoded hash to the console
     console.log(hash.toString(CryptoJS.enc.Hex))
     ```
 
@@ -304,13 +305,9 @@ In this step, you write a bash script that signs the bundle hash.
     done
     ```
 
-4. Set the default index and [security level](root://getting-started/0.1/clients/security-levels.md) to use to generate the input address
+4. Set the default [security level](root://getting-started/0.1/clients/security-levels.md) to use to generate an input address
 
     ```bash
-    # This demo always uses keyIndex 0
-    keyIndex=0
-
-    # This demo always uses security level 2
     securityLevel=2
     ```
 
@@ -318,7 +315,35 @@ In this step, you write a bash script that signs the bundle hash.
     Input addresses are those that are used in [input transactions](root://getting-started/0.1/transactions/transactions.md#input-transactions), which withdraw IOTA tokens from addresses.
     :::
 
-5. Generate the input address, using the CryptoCore [`getAddress`](../references/api-reference.md#getaddress) command
+5. Create a file to keep track of the address index that you are using to generate an input address
+
+    ```bash
+    indexFile="../slot-$slot-security-level-$securityLevel-unspent-address-index.js"
+
+    # If the file does not exist, create it and set the index to 0
+    if [ ! -f $indexFile ]; then
+        echo "Creating file to keep track of spent addresses by their key index"
+        keyIndex=0
+        echo -e "{\"index\":$keyIndex}" >  $indexFile
+    else
+        # Read an existing index from the file
+        keyIndex=$(tail -n 1 $indexFile | jq .index)
+    fi
+
+    # Make sure a directory exists in which you can save unfinished or pending transactions
+    saved_transaction_directory="/home/pi/cryptocore-scripts/my-transactions"
+
+    if [ ! -d $saved_transaction_directory ]; then
+        mkdir $saved_transaction_directory
+    fi
+    ```
+
+    :::info:
+    By keeping track of the address index, you can be sure that you aren't generating [spent addresses](root://getting-started/0.1/clients/addresses.md#spent-addresses).
+    :::
+    
+
+5. Generate an input address, using the CryptoCore [`getAddress`](../references/api-reference.md#getaddress) command
 
     ```bash
     # Create a generateAddress API request, using the user's answer
@@ -337,7 +362,7 @@ In this step, you write a bash script that signs the bundle hash.
     :::info:
     The `serial.js` file uses the [SerialPort package](https://serialport.io/docs/guide-installation) to open a serial connection to the CryptoCore.
 
-    You can find the code for this file on [GitHub](https://github.com/JakeSCahill/cryptocore-scripts/blob/master/node-scripts/serial.js).
+    You can find the code for this file on [GitHub](https://github.com/iota-community/cryptocore-scripts/blob/master/node-scripts/serial.js).
     :::
 
 6. Ask the user for an output address into which to deposit the full balance of the input address
@@ -351,11 +376,11 @@ In this step, you write a bash script that signs the bundle hash.
     done
     ```
 
-7. Execute the `create-unsigned-bundle.js` script and pass it the minimum weight magnitude, input address, output address, and security level
+7. Execute the `create-unsigned-bundle.js` script
 
     ```bash
     # Execute the create-unsigned-bundle.js script to create an unsigned bundle from the user's input
-    unsigned_bundle_hash=$(node ../node-scripts/create-unsigned-bundle.js $MWM $input $output $securityLevel)
+    unsigned_bundle_hash=$(node ../node-scripts/create-unsigned-bundle.js $MWM $input $output $securityLevel $saved_transaction_directory)
 
     if [[ ! $unsigned_bundle_hash =~ [A-Z9]{81} ]]; then
         echo "$unsigned_bundle_hash"
@@ -375,37 +400,38 @@ In this step, you write a bash script that signs the bundle hash.
 
     sign_bundle_json_string=$(printf "$sign_bundle_template" "$slot" "$keyIndex" "$unsigned_bundle_hash" "$securityLevel" "$auth")
 
-    echo "$sign_bundle_json_string"
-
     echo "Signing transaction"
 
     # Open the serial terminal and enter the API request to create a zero-value transaction
-    signature=$(node ../node-scripts/serial.js "$sign_bundle_json_string" | jq ".trytes[]" | tr -d '"' | rev | cut -c 2- | rev|tr -d '\n')
+    signature=$(node ../node-scripts/serial.js "$sign_bundle_json_string" | jq ".trytes[]" | tr -d '"' | tr -d '\n')
     ```
 
 9. Pass the signature to the `add-signature-to-bundle.js` script to add it to the bundle and attach the transactions to the Tangle
 
     ```bash
-    result=$(node ../node-scripts/add-signature-to-bundle.js $MWM $signature)
+    result=$(node ../node-scripts/add-signature-to-bundle.js $MWM $signature $indexFile $saved_transaction_directory)
 
     echo "$result"
     ```
 
+    :::info:
+    Here, you also pass the index file that you created in step 5 to the script. This way, it can increment the index when the bundle has been attached to the Tangle.
+    :::
+
 ## Step 4. Add the signature to the bundle
 
-In this step, you write a script that adds a signature to the bundle that you saved in the `create-unsigned-bundle.js` script.
+In this step, you write a script that adds a signature to the bundle that you saved in the `add-signature-to-bundle.js` script.
 
-1. Create a new file called `create_tx.sh`
+1. Create a new file called `add-signature-to-bundle.js`
 
     ```bash
-    sudo nano create_tx.sh
+    sudo nano add-signature-to-bundle.js.
     ```
 
 2. Use the first argument that is passed to the script to connect to a node on either the Devnet or the Mainnet
 
     ```js
-    // Get the first argument that was passed to this script
-    // This should be a minimum weight magnitude (14 or 9)
+    // This argument should be a minimum weight magnitude (14 or 9)
     const network = parseInt(process.argv[2]);
 
     // Define a node for each IOTA network
@@ -430,8 +456,8 @@ In this step, you write a script that adds a signature to the bundle that you sa
 3. Convert the signature in the second argument to trits and store it in a variable
 
     ```js
-    // Get the second argument that was passed to this script
-    // This should be a signature
+    
+    // This argument should be a signature
     const signature = process.argv[3];
     const signatureTrits = Converter.trytesToTrits(signature)
     ```
@@ -439,10 +465,12 @@ In this step, you write a script that adds a signature to the bundle that you sa
 4. Read the bundle trits from the file that was saved by the `create-unsigned-bundle.js` script
 
     ```js
-    let bundle = new Int8Array(fs.readFileSync('../bash-scripts/bundle'));
+    // This argument should be the path to which you can save unfinished or pending transactions
+    const savedTransactionDirectory = process.argv[5];
+    let bundle = new Int8Array(fs.readFileSync(`${savedTransactionDirectory}/bundle`));
     ```
 
-5. Add the signature to the bundle, starting from the second transaction
+5. Add the signature to the bundle, starting from the second transaction and save it to a file
 
     ```js
     // Transaction 0 is the output transaction, so start adding the signature fragments, starting from the second transaction in the bundle
@@ -453,27 +481,51 @@ In this step, you write a script that adds a signature to the bundle that you sa
     This method overwrites the bundle array with new transactions that include the signature fragments.
     :::
 
-6. Convert each transaction in the bundle array to trytes
+6. Convert each transaction in the bundle array to trytes and save them to a file
 
     ```js
-    const trytes = []
+    let trytes = []
     for (let offset = 0; offset < bundle.length; offset += Transaction.TRANSACTION_LENGTH) {
         trytes.push(Converter.tritsToTrytes(bundle.subarray(offset, offset + Transaction.TRANSACTION_LENGTH)));
     }
+
+    // Reverse the trytes so that the transactions are ordered head first
+    trytes = trytes.reverse();
+
+    // Save the trytes to a file so that they can later be reattached if needed
+    fs.writeFile(`${savedTransactionDirectory}/attached_value_trytes.txt`, trytes, function(error, result)  {
+        if (error){
+            console.log(error);
+        } else {
+            console.log("Bundle trytes saved");
+        }
+    });
     ```
 
-7. Use the `sendTrytes()` method to attach the transaction trytes to the Tangle
+7. Use the [`sendTrytes()`](https://github.com/iotaledger/iota.js/tree/next/packages/core#module_core.sendTrytes) method to do proof of work and send the transactions to the connected node
 
     ```js
     // We need the bundle to be in order head to tail before sending it to the node
-    iota.sendTrytes(trytes.reverse(), depth, network)
-    .then(bundle => {
-        console.log(`Sent bundle: ${JSON.stringify(bundle, null, 1)}`)
+    iota.sendTrytes(trytes, depth, network)
+        .then(bundle => {
+        // Increment the index to avoid withdrawing from the same address again
+        let index = indexFile.index;
+        index++;
+        indexFile.index = index;
+        // Update the index in the file and save it
+        fs.writeFileSync(indexFilePath, JSON.stringify(indexFile));
+        console.log('Bundle sent.');
+        let tailTransactionHash = bundle[0].hash;
+        console.log(`Tail transaction hash:${tailTransactionHash}`);
     })
     .catch(error => {
-        console.log(error);
+    console.log(error);
     });
     ```
+
+    :::info:
+    If the method succeeds, the index in the file is incremented so that next time you execute the script, an unspent address will be generated.
+    :::
 
 :::success:
 You have just written a command-line interface (CLI) program that uses the CryptoCore API to sign a bundle, and attaches the transactions to the Tangle.
@@ -490,7 +542,7 @@ In the command-line, do the following:
 1. Clone the repository and change into the `cryptocore-scripts/node-scripts` directory
 
     ```bash
-    git clone https://github.com/JakeSCahill/cryptocore-scripts
+    git clone https://github.com/iota-community/cryptocore-scripts
     cd cryptocore-scripts/node-scripts
     ```
 
@@ -521,37 +573,60 @@ In the command-line, do the following:
 
 4. Follow the prompts
 
-You should see the transaction object that was sent to the node. For example:
+You should see something like the following:
 
-```js
-{
-  hash: 'YQNCKGIGOZJJJGMNMAVWKJGDJLQOXDTADIJTYU9HBIGKTDKUXHBMOBXVZYWAUWOSKKYUSUIDVPNZZ9999',
-  signatureMessageFragment: 'ODGAADTCGDGDPCVCTCGADBGARBOBVBVBYBEAFCYBACVBNBEAPBACYBWBEAMBACHCZBCCYBMBYBACOBGAQD99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999',
-  address: '999999999999999999999999999999999999999999999999999999999999999999999999999999999',
-  value: 0,
-  obsoleteTag: 'CWYPTOCORE99999999999999999',
-  timestamp: 1059930011,
-  currentIndex: 0,
-  lastIndex: 0,
-  bundle: 'DAIHSSITPKSZRVHDTVLXIBPYGKLGKZBRDZSGRFYGIBXTPCZFIL9JAJDEGABAUVCJNHWAUULGXRBDGNDIZ',
-  trunkTransaction: 'HEWJUPLE9GHUDOFGCARASDIUDMXDQSV99WBSJYIXWHVCMHFGIXRTTTHBIEJGUPHCQQQGEZMZPRSRA9999',
-  branchTransaction: 'HEWJUPLE9GHUDOFGCARASDIUDMXDQSV99WBSJYIXWHVCMHFGIXRTTTHBIEJGUPHCQQQGEZMZPRSRA9999',
-  tag: 'CRYPTOCORE99999999999999999',
-  attachmentTimestamp: 1581607894939,
-  attachmentTimestampLowerBound: 0,
-  attachmentTimestampUpperBound: 11,
-  nonce: 'ICCFPGA9B9999999UVNPNVVMMMM'
-}
+```
+Are you sending this transaction to the Devnet or the Mainnet? d
+
+Setting minimum weight magnitude to 9.
+
+Please enter the slot number for a seed in the CryptoCore secure memory:0
+
+Creating file to keep track of spent addresses by their key index
+
+Generating an address with index 0 and security level 2
+
+If you haven't already done so, make sure that this address contains IOTA tokens: VTAEDPQVIKLHTNRFGDYCQCVXBSQHHQZTBHGORW9XMSJHFLIBNJIITBUZBGUFCTZHNPDWQXXSQLWBJLWYD
+
+To which address would you like to send your IOTA tokens? VTAEDPQVIKLHTNRFGDYCQCVXBSQHHQZTBHGORW9XMSJHFLIBNJIITBUZBGUFCTZHNPDWQXXSQLWBJLWYD
+
+Signing transaction
+Bundle sent.
+Tail transaction hash:EIFWPZBERTVIEPQVGXNXCBILS9G9MLZYOHEAHTCZKXSSVLENKDVBPYATVTEZYBDRTATYKXHEZQTANQ999
 ```
 
-You can copy the `hash` field of your transaction object and paste it into a [Tangle explorer](https://utils.iota.org/).
+To see your bundle on the Tangle, copy the tail transaction hash and paste it into a [Tangle explorer](https://utils.iota.org/).
 
 If the Tangle explorer doesn't display your transaction after 5 minutes, the node may not have sent your transaction to its neighbors.
 
-To resend your transaction, you can pass the transaction trytes in the `attached-transaction-trytes/zero_value_transaction.txt` file to the [`storeAndBroadcast()`](https://github.com/iotaledger/iota.js/tree/next/packages/core#corestoreandbroadcasttrytes-callback) method in the JavaScript client library.
+To resend your transaction, you can pass the transaction trytes in the `my-transactions/attached_value_trytes.txt` file to the [`sendTrytes()`](https://github.com/iotaledger/iota.js/tree/next/packages/core#corestoreandbroadcasttrytes-callback) method in the JavaScript client library.
 
 ## Next steps
 
-Add how you could improve this script
+This sample code is a simple example of how to use the CryptoCore to create a wallet that signs bundles and keeps track of spent addresses.
 
+To improve this sample code, you could extend it to support any of the following examples:
 
+- Use the CryptoCore to do local proof of work instead of outsourcing it to the connected node through the `sendTrytes()` method
+
+    :::info:
+    For example, you could take inspiration from the `do_pow.sh` script.
+    :::
+
+- Allow the user to choose a remainder address
+
+    :::info:
+    For example, instead of transferring the whole balance of the input address to an output address, the user could transfer part of the balance and send the rest to a chosen remainder address.
+    :::
+
+- Allow the user to choose a value to send
+
+    :::info:
+    For example, you may want to ask the user how much to send, then generate a certain number of addresses to see if the user has enough balance.
+    :::
+
+- Use a configuration file to define variables that are used across all the scripts
+
+    :::info:
+    For example, you might want to define the nodes in a JSON configuration file.
+    :::

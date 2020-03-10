@@ -130,7 +130,7 @@ You've just sent your first transfer bundle. Your transactions are attached to t
 
 ## Run the code
 
-These code samples are hosted on [GitHub](https://github.com/JakeSCahill/java-iota-workshop).
+These code samples are hosted on [GitHub](https://github.com/iota-community/java-iota-workshop).
 
 To get started you need [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed on your device.
 
@@ -141,7 +141,7 @@ In the command-line, do the following:
 --------------------
 ### Linux and macOS
 ```bash
-git clone https://github.com/JakeSCahill/java-iota-workshop.git
+git clone https://github.com/iota-community/java-iota-workshop.git
 cd java-iota-workshop
 mvn clean install
 mvn exec:java -Dexec.mainClass="com.iota.SendTokens"
@@ -149,7 +149,7 @@ mvn exec:java -Dexec.mainClass="com.iota.SendTokens"
 ---
 ### Windows
 ```bash
-git clone https://github.com/JakeSCahill/java-iota-workshop.git
+git clone https://github.com/iota-community/java-iota-workshop.git
 cd java-iota-workshop
 mvn clean install
 mvn exec:java -D"exec.mainClass"="com.iota.SendTokens"

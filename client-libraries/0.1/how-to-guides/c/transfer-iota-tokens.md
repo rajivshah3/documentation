@@ -142,7 +142,7 @@ You've just sent your first transfer bundle. Your transactions are attached to t
 
 ## Run the code
 
-These code samples are hosted on [GitHub](https://github.com/JakeSCahill/c-iota-workshop).
+These code samples are hosted on [GitHub](https://github.com/iota-community/c-iota-workshop).
 
 To get started you need [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed on your device.
 

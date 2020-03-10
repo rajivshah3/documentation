@@ -8,7 +8,7 @@ This guide walks you through the process of writing the following scripts:
 - **`send-tx.js`:** This script connects to a node and sends the transaction to it
 
 :::info:
-These code samples are also hosted on [GitHub](https://github.com/JakeSCahill/cryptocore-scripts).
+These code samples are also hosted on [GitHub](https://github.com/iota-community/cryptocore-scripts).
 :::
 
 :::warning:
@@ -141,8 +141,8 @@ In this step, you write the `create_tx.sh` script that prompts the user for the 
 8. Create a [`jsonDataTX`](../references/api-reference.md#jsondatatx) API request, send it to the CryptoCore through a serial terminal, and save the result to a file
 
     ```bash
-    # Make sure the directory exists
-    saved_transaction_directory="../attached-transaction-trytes"
+    # Make sure a directory exists in which you can save unfinished or pending transactions
+    saved_transaction_directory="/home/pi/cryptocore-scripts/my-transactions"
 
     if [ ! -d $saved_transaction_directory ]; then
         mkdir $saved_transaction_directory
@@ -158,7 +158,7 @@ In this step, you write the `create_tx.sh` script that prompts the user for the 
     :::info:
     The `serial.js` file uses the [SerialPort package](https://serialport.io/docs/guide-installation) to open a serial connection to the CryptoCore.
 
-    You can find the code for this file on [GitHub](https://github.com/JakeSCahill/cryptocore-scripts/blob/master/node-scripts/serial.js).
+    You can find the code for this file on [GitHub](https://github.com/iota-community/cryptocore-scripts/blob/master/node-scripts/serial.js).
     :::
 
 9. Execute the `send-tx.js` script and pass it the user's chosen MWM
@@ -195,9 +195,8 @@ In this step, you use the Javascript client library to attach the saved transact
 
 4. Use the first argument that was passed to the script to connect to a node on either the Devnet or the Mainnet
 
-    ```js
-    // Get the first argument that was passed to this script
-    // This should be a minimum weight magnitude (14 or 9)
+    ```js 
+    // This argument should be a minimum weight magnitude (14 or 9)
     const network = process.argv[2];
 
     // Define a node for each IOTA network
@@ -221,11 +220,11 @@ In this step, you use the Javascript client library to attach the saved transact
 5. Read the transaction trytes from the file
 
     ```js
-    // Path to the file where the CryptoCore script saved the transaction trytes
-    const savedTransactionTrytes = "/home/pi/cryptocore-scripts/attached-transaction-trytes";
+    // This argument should be the path to which you can save unfinished or pending transactions
+    const savedTransactionDirectory = process.argv[3];
 
     // Check the file for transaction trytes
-    const data = fs.readFileSync(`${savedTransactionTrytes}/zero_value_transaction.txt`);
+    const data = fs.readFileSync(`${savedTransactionDirectory}/zero_value_transaction_trytes.txt`);
     const match = data.toString().match(/[A-Z9,]*/g);
     const trytes = [match[0]];
 
@@ -261,7 +260,7 @@ In the command-line, do the following:
 1. Clone the repository and change into the `cryptocore-scripts/node-scripts` directory
 
     ```bash
-    git clone https://github.com/JakeSCahill/cryptocore-scripts
+    git clone https://github.com/iota-community/cryptocore-scripts
     cd cryptocore-scripts/node-scripts
     ```
 
@@ -319,7 +318,7 @@ You can copy the `hash` field of your transaction object and paste it into a [Ta
 
 If the Tangle explorer doesn't display your transaction after 5 minutes, the node may not have sent your transaction to its neighbors.
 
-To resend your transaction, you can pass the transaction trytes in the `attached-transaction-trytes/zero_value_transaction.txt` file to the [`storeAndBroadcast()`](https://github.com/iotaledger/iota.js/tree/next/packages/core#corestoreandbroadcasttrytes-callback) method in the JavaScript client library.
+To resend your transaction, you can pass the transaction trytes in the `my-transactions/zero_value_transaction_trytes.txt` file to the [`storeAndBroadcast()`](https://github.com/iotaledger/iota.js/tree/next/packages/core#corestoreandbroadcasttrytes-callback) method in the JavaScript client library.
 
 ## Next steps
 

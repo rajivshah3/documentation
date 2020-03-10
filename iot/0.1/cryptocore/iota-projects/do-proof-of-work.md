@@ -9,7 +9,7 @@ This guide walks you through the process of writing the following scripts:
 - **`send-bundle.js`:** This script connects to a node and sends the bundle's transactions to it
 
 :::info:
-These code samples are also hosted on [GitHub](https://github.com/JakeSCahill/cryptocore-scripts).
+These code samples are also hosted on [GitHub](https://github.com/iota-community/cryptocore-scripts).
 :::
 
 :::warning:
@@ -60,8 +60,8 @@ In this step, you write a script that creates eight zero-value transactions, cha
 2. Use the first argument that is passed to the script to connect to a node on either the Devnet or the Mainnet
 
     ```js
-    // Get the first argument that was passed to this script
-    // This should be a minimum weight magnitude (14 or 9)
+    
+    // This argument should be a minimum weight magnitude (14 or 9)
     const network = process.argv[2];
 
     // Define a node for each IOTA network
@@ -223,7 +223,7 @@ In this step, you use the CryptoCore API to do proof of work for the eight trans
     :::info:
     The `get-branch-and-trunk.js` file uses the [`getTransactionsToApprove()`](https://github.com/iotaledger/iota.js/tree/next/packages/core#module_core.getTransactionsToApprove) method to get two tip transaction from the Tangle.
 
-    You can find the code for this file on [GitHub](https://github.com/JakeSCahill/cryptocore-scripts/blob/master/node-scripts/get-branch-and-trunk.js).
+    You can find the code for this file on [GitHub](https://github.com/iota-community/cryptocore-scripts/blob/master/node-scripts/get-branch-and-trunk.js).
     :::
 
 6. Create an `attachToTangle` API request, send it to the CryptoCore through a serial terminal, and save the result to a file
@@ -233,7 +233,7 @@ In this step, you use the CryptoCore API to do proof of work for the eight trans
     timestamp=$(date +%s%3N)
 
     # Make sure a directory exists in which to save the transaction trytes
-    saved_transaction_directory="/home/pi/cryptocore-scripts/attached-transaction-trytes"
+    saved_transaction_directory="/home/pi/cryptocore-scripts/my-transactions"
 
     if [ ! -d $saved_transaction_directory ]; then
         mkdir $saved_transaction_directory
@@ -251,7 +251,7 @@ In this step, you use the CryptoCore API to do proof of work for the eight trans
     :::info:
     The `serial.js` file uses the [SerialPort package](https://serialport.io/docs/guide-installation) to open a serial connection to the CryptoCore.
 
-    You can find the code for this file on [GitHub](https://github.com/JakeSCahill/cryptocore-scripts/blob/master/node-scripts/serial.js).
+    You can find the code for this file on [GitHub](https://github.com/iota-community/cryptocore-scripts/blob/master/node-scripts/serial.js).
     :::
 
 7. Send the transaction trytes, which now include a proof of work, to the connected IOTA node by executing the `send-bundle.js` script
@@ -276,8 +276,7 @@ In this step, you write a script that attaches a bundle of transactions to the T
 2. Use the first argument that was passed to the script to connect to a node on either the Devnet or the Mainnet
 
     ```js
-    // Get the first argument that was passed to this script
-    // This should be a minimum weight magnitude (14 or 9)
+    // This argument should be a minimum weight magnitude (14 or 9)
     const network = process.argv[2];
 
     // Define a node for each IOTA network
@@ -301,18 +300,19 @@ In this step, you write a script that attaches a bundle of transactions to the T
 5. Read the transaction trytes from the file
 
     ```js
-    // Path to the file where the main script saved the transaction trytes
-    const savedTransactionTrytes = "/home/pi/cryptocore-scripts/attached-transaction-trytes";
+    // This argument should be the path to which you can save the attached transaction trytes
+    const savedTransactionDirectory = process.argv[3];
 
-    // Check the file for transaction trytes
-    const data = fs.readFileSync(`${savedTransactionTrytes}/attached_trytes.txt`);
-    const match = data.toString().match(/[A-Z9,]*/g);
-    const trytes = [match[0]];
+    // Read transaction trytes from the file
+    let trytes = fs.readFileSync(`${savedTransactionDirectory}/attached_trytes.txt`).toString();
 
     if (!trytes) {
             console.log("No trytes found. Make sure that proof of work was done and check the following file :");
-            console.log(`${savedTransactionTrytes}/attached_trytes.txt`);
+            console.log(`${savedTransactionDirectory}/attached_trytes.txt`);
     }
+
+    // Parse the JSON into an array
+    trytes = JSON.parse(trytes);
     ```
 6. Use the [`storeAndBroadcast()`](https://github.com/iotaledger/iota.js/tree/next/packages/core#corestoreandbroadcasttrytes-callback) method to send the transactions to the connected node, then print the attached tail transaction hash to the console
 
@@ -345,7 +345,7 @@ In the command-line, do the following:
 1. Clone the repository and change into the `cryptocore-scripts/node-scripts` directory
 
     ```bash
-    git clone https://github.com/JakeSCahill/cryptocore-scripts
+    git clone https://github.com/iota-community/cryptocore-scripts
     cd cryptocore-scripts/node-scripts
     ```
 
@@ -394,7 +394,7 @@ To see your bundle on the Tangle, copy the tail transaction hash and paste it in
 
 If the Tangle explorer doesn't display your transaction after 5 minutes, the node may not have sent your transaction to its neighbors.
 
-To resend your transaction, you can pass the transaction trytes in the `attached-transaction-trytes/attached_trytes.txt` file to the [`storeAndBroadcast()`](https://github.com/iotaledger/iota.js/tree/next/packages/core#corestoreandbroadcasttrytes-callback) method in the JavaScript client library.
+To resend your transaction, you can pass the transaction trytes in the `my-transactions/attached_trytes.txt` file to the [`storeAndBroadcast()`](https://github.com/iotaledger/iota.js/tree/next/packages/core#corestoreandbroadcasttrytes-callback) method in the JavaScript client library.
 
 ## Next steps
 
