@@ -107,7 +107,7 @@ Blueprint demos are example applications of how IOTA technology can be used to s
 <summary>Getting started with your first contribution</summary>
 <br>
 
-At the root of each IOTAledger repository is a contribution guide with advice for getting started.
+In the `.github` directory of each IOTAledger repository is a `CONTRIBUTING.md` file with advice for getting started.
 
 If you are unsure where to begin, you can start by looking any `beginner` or `help-wanted` issues.
 </details>
