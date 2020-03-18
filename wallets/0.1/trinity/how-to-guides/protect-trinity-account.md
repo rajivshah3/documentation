@@ -2,6 +2,18 @@
 
 **Between 17 December 2019 and 17 February 2020, some users’ Trinity seeds and passwords were compromised during an attack on the wallet. In this guide, you learn what you can do to secure your IOTA tokens.**
 
+:::warning:
+The migration period is now over.
+
+If you did not use the Seed Migration Tool, we recommend creating a new Trinity account and tranferring your IOTA tokens to a new seed.
+
+If you did use the Seed Migration Tool, open Trinity, create a new account, and import your new SeedVault file.
+
+For more information, see [Create an account](../how-to-guides/create-an-account.md).
+
+For other questions, see [Seed migration FAQ](../references/faq.md). 
+:::
+
 To stop attackers from further transferring IOTA tokens, the IOTA Foundation paused the Coordinator and [released an updated version of Trinity](#install-the-latest-version-of-trinity). This version is no longer vulnerable to the attack.
 
 While the [Coordinator](root://getting-started/0.1/network/the-coordinator.md) is paused, no one can transfer their IOTA tokens on the Mainnet.

@@ -118,5 +118,5 @@ If you are unsure where to begin, you can start by looking any `beginner` or `he
 <summary>Code of Conduct</summary>
 <br>
 
-This project and everyone participating in it is governed by the [IOTA Code of Conduct](../iotaledger/code-of-conduct.md).
+This project and everyone participating in it is governed by the [IOTA Code of Conduct](https://www.iota.org/contact-us/community-support).
 </details>
