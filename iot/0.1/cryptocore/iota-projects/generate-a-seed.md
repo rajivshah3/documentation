@@ -2,6 +2,12 @@
 
 **In this guide, you use the CryptoCore to generate a random seed and store it in the secure memory.**
 
+:::warning:
+For your convenience, all sample code uses the default secret key and the default API key.
+
+If you want to use the CryptoCore in a production environment, you should follow the instructions in the 'Securing the FPGA' section of the [manual](https://gitlab.com/iccfpga-rv/iccfpga-manual/-/blob/master/iccfpga.pdf).
+:::
+
 ## Prerequisites
 
 To complete this guide, you need to have completed the [CryptoCore getting started guide](../introduction/get-started.md).
@@ -28,17 +34,17 @@ To generate a seed, you can use the `generateRandomSeed` API endpoint.
     }
     ``` 
 
-    Now that the secure memory is initialized with the secret key, you can use it to store a seed.
+    Now that the secure memory is initialized with the secret key, you can use it to generate a seed.
 
 3. Enter the following command to generate a seed and store it in the secure memory
 
     ```bash
-    {"command":"generateRandomSeed","key": 0}
+    {"command":"generateRandomSeed","slot": 0}
     ```
 
     :::info:
     The CryptoCore can store up to eight seeds in the secure memory.
-    Here, we store the seed in key index 0. If you want to generate more seeds, you can store them in any key index up to and including 7.
+    Here, we store the seed in slot 0. If you want to generate more seeds, you can store them in any slot up to and including 6.
     :::
 
     You should see the following:

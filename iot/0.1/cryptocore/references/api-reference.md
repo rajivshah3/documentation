@@ -133,14 +133,14 @@ element by calling the [`initSecureElement`](#initsecureelement) command.
 
 |**Parameter** |   **Type**  |              **Description**|
 |:----------- |:---------|:-------------------------
-|`key`   |   integer |  An integer between 0 and 7, which specifies the memory address in which to save the seed|
+|`slot`   |   integer |  An integer between 0 and 7, which specifies the memory address in which to save the seed|
 
 ### Example request
 
 ```json
 {
     "command":"generateRandomSeed",
-    "key": 0
+    "slot": 0
 }
 ```
 
@@ -167,9 +167,9 @@ element by calling the [`initSecureElement`](#initsecureelement) command.
 ```
 --------------------
 
-## generateAddress
+## getAddress
 
-Generates addresses for the seed in given key of the secure element.
+Generates addresses, using the seed in the given slot of the secure element.
 
 :::info:
 Before you can call this command, you must initalize the secure
@@ -180,8 +180,8 @@ element by calling the [`initSecureElement`](#initsecureelement) command.
 
 |**Parameter**  |   **Type**  |     **Description**|
 |:------------ |:---------|-------------------------|
-`key`       |integer   |The memory address of the seed from which you want to derive the address
-`firstIndex`  | integer    |      The address index from which to start generating addresses
+`slot`       |integer   |The memory address of the seed from which you want to derive the address
+`keyIndex`  | integer    |      The address index from which to start generating addresses
 `number` |    integer  |    The number of addresses to generate, starting from the first index
 `security`   | integer    |     The security level of the address that you want to generate
 
@@ -189,9 +189,9 @@ element by calling the [`initSecureElement`](#initsecureelement) command.
 
 ```json
 {
-    "command":"generateAddress",
-    "key": 0,
-    "firstIndex": 0,
+    "command":"getAddress",
+    "slot": 0,
+    "keyIndex": 0,
     "number": 10,
     "security": 2
 }
@@ -204,7 +204,7 @@ element by calling the [`initSecureElement`](#initsecureelement) command.
 ```json
 {
     "code": 200,
-    "command":"generateAddress",
+    "command":"getAddress",
     "trytes": ["....","...."],
     "duration": 1800
 }
@@ -215,7 +215,43 @@ element by calling the [`initSecureElement`](#initsecureelement) command.
 ```json
 {
     "code": 400,
-    "command":"generateAddress",
+    "command":"getAddress",
+    "error": "Error message"
+}
+```
+--------------------
+
+## version
+
+Gets the current API version
+
+### Example request
+
+```json
+{
+    "command":"version"
+}
+```
+
+### Response examples
+
+--------------------
+### 200
+```json
+{
+    "version":"0.11rv",
+    "command":"version",
+    "duration":0,
+    "code":200
+}
+```
+---
+### 400
+
+```json
+{
+    "code": 400,
+    "command":"version",
     "error": "Error message"
 }
 ```
@@ -286,7 +322,7 @@ This command can do proof of work for up to eight transactions at once.
 |**Parameter**              |**Type**    |                           **Description**|
 |:-------------------- |:------------------ |:----------------------------------------------------------
 |minWeightMagnitude   |    integer      |  The minimum weight magnitude to use during proof of work
-|trytes     |    array of strings     |       Transaction trytes of the transactions
+|trytes     |    array of strings     |       Transaction trytes
 
 ### Example request
 
@@ -322,16 +358,16 @@ This command can do proof of work for up to eight transactions at once.
 ```
 --------------------
 
-## signTransaction
+## signBundleHash
 
-Signs a single input transaction, using the seed in the given key of the secure element.
+Signs a bundle hash, using the private key of an address that belongs to the seed in the given slot of the secure element.
 
 :::info:
 Before you can call this command, you must initalize the secure
 element by calling the [`initSecureElement`](#initsecureelement) command, then do the following calculation and add the result to the `auth` parameter:
 
 ```
-keccak384(key+addressIndex+bundleHash+apiKey)
+hexadecimal(keccak384(slot+keyIndex+bundleHash+apiKey))
 ```
 :::
 
@@ -339,21 +375,21 @@ keccak384(key+addressIndex+bundleHash+apiKey)
 
 |**Parameter**|      **Type** |                                  **Description**
 |:--------------- |:--------- |:--------------------------------------------------------------------------
-|`key`    |    string        |      The memory address of the seed that owns the address
-|`addressIndex`  |  string       |           The index of the input transaction's address
+|`slot`    |    string        |      The memory address of the seed that owns the address
+|`keyIndex`  |  string       |           The index of the input transaction's address
 |`bundleHash`   |  integer     |        The bundle hash in the transaction's `bundle` field
-|`securityLevel` |  integer   |         The security level of the input transaction's address
-|`auth`       | string  |  The Keccak384 hash of the `key`, `addressIndex`, `bundleHash`, and the API key
+|`security` |  integer   |         The security level of the input transaction's address
+|`auth`       | string  |  A hexadecimal encoding of the Keccak384 hash of the `slot`, `keyIndex`, and `bundleHash` arguments, and the API key
 
 ### Example Request
 
 ```json
 {
-    "command":"signTransaction",
-    "key": 0,
-    "addressIndex": 0,
+    "command":"signBundleHash",
+    "slot": 0,
+    "keyIndex": 0,
     "bundleHash": "...",
-    "securityLevel": 2,
+    "security": 2,
     "auth": "..."
 }
 ```
@@ -365,7 +401,7 @@ keccak384(key+addressIndex+bundleHash+apiKey)
 ```json
 {
     "code": 200,
-    "command":"signTransaction",
+    "command":"signBundleHash",
     "trytes": ["....","....",...],
     "duration": 1800
 }
@@ -376,7 +412,7 @@ keccak384(key+addressIndex+bundleHash+apiKey)
 ```json
 {
     "code": 400,
-    "command":"signTransaction",
+    "command":"signBundleHash",
     "error": "Error message"
 }
 ```
@@ -556,7 +592,7 @@ base64(keccak384(page+data+apiKey))
 |:----------- |:--------- |:-----------------------------------------------------------
 |`page`      |integer|  page number in QSPI flash. Valid values are between 0 and 4095.
 |`data`     | string  | 4 kB data in base64 encoding
-|`auth`  |    string |  Checksum and authentication
+|`auth`  |    string |  A base64 encoding of the Keccak384 hash of the `page` and `data` arguments, and the API key
                         
 
 ```json

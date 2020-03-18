@@ -104,7 +104,7 @@ You've just found and read a transaction from the Tangle.
 
 ## Run the code
 
-These code samples are hosted on [GitHub](https://github.com/JakeSCahill/c-iota-workshop).
+These code samples are hosted on [GitHub](https://github.com/iota-community/c-iota-workshop).
 
 To get started you need [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed on your device.
 

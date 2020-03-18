@@ -321,7 +321,7 @@ You've confirmed your connection to a synchronized node.
 
 ## Run the code
 
-These code samples are hosted on [GitHub](https://github.com/JakeSCahill/java-iota-workshop).
+These code samples are hosted on [GitHub](https://github.com/iota-community/c-iota-workshop).
 
 To get started you need [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed on your device.
 

@@ -10,6 +10,8 @@
 
 [CryptoCore/IOTA projects/Generate a secure seed](/cryptocore/iota-projects/generate-a-seed.md)
 
+[CryptoCore/IOTA projects/Transfer IOTA tokens](/cryptocore/iota-projects/send-value-transaction.md)
+
 [CryptoCore/References/API reference](/cryptocore/references/api-reference.md)
 
 [CryptoCore/References/Utility scripts](/cryptocore/references/scripts.md)

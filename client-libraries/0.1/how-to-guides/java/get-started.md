@@ -3,7 +3,7 @@
 **To help you get started with the Java client library, this workflow guide walks you through the essentials from sending a zero-value transaction to transferring IOTA tokens and monitoring a node for live Tangle data.**
 
 :::info:
-The code is also hosted on [GitHub](https://github.com/JakeSCahill/java-iota-workshop).
+The code is also hosted on [GitHub](https://github.com/iota-community/java-iota-workshop).
 :::
 
 ## What you will learn
