@@ -307,4 +307,4 @@ If all [status checks](https://help.github.com/articles/about-status-checks/) pa
 <summary>Code of Conduct :clipboard:</summary>
 <br>
 
-This project and everyone participating in it is governed by the [IOTA Code of Conduct](CODE_OF_CONDUCT.md).
+This project and everyone participating in it is governed by the [IOTA Code of Conduct](https://www.iota.org/contact-us/community-support).

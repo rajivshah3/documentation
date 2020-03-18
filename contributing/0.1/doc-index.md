@@ -2,6 +2,6 @@
 
 [Documentation/Contribute to the docs](documentation/contribution-guidelines.md)
 
-[IOTAledger/Contribute to a repository](iotaledger/contribution-guidelines.md)
+[Documentation/Documentation style guide](documentation/style-guide.md)
 
-[IOTAledger/Code of conduct](iotaledger/code-of-conduct.md)
+[IOTAledger/Contribute to a repository](iotaledger/contribution-guidelines.md)

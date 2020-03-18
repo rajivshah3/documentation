@@ -64,7 +64,7 @@ If you want to link to another project, use the following structure `root://anot
 
 ## Supporting the project
 
-If you'd like to help us write new content, or to edit existing content, please refer to the [contribution guidelines](./contributing/0.1/documentation/contribution-guidelines.md).
+If you'd like to help us write new content, or to edit existing content, please refer to the [contribution guidelines](.github/CONTRIBUTING.md).
 
 ## Joining the discussion
 
