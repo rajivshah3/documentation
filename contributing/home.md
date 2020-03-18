@@ -6,5 +6,5 @@
 [Contribute to a repository](/0.1/iotaledger/contribution-guidelines.md)
 ## Get an overview of the repositories on the IOTAledger GitHub organization
 
-[Code of Conduct](/0.1/iotaledger/code-of-conduct.md)
-## Read the Code of Conduct for all contributors and users who engage with the IOTA Foundation team and its community services
+[Style guide](/0.1/documentation/style-guide.md)
+## Read the documentation style guide for guidance on writing new content
