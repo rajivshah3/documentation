@@ -45,7 +45,9 @@ Please check the following list:
 
 - **Ensure the mistake has not already been reported** by searching on GitHub under [**Issues**](https://github.com/iotaledger/documentation/issues). If the mistake has already been reported **and the issue is still open**, add a comment to the existing issue instead of opening a new one.
 
-**Note:** If you find a **Closed** issue that seems similar to what you're experiencing, open a new issue and include a link to the original issue in the body of your new one.
+:::info:
+If you find a **Closed** issue that seems similar to what you're experiencing, open a new issue and include a link to the original issue in the body of your new one.
+:::
 
 ### Reporting a mistake
 
@@ -90,7 +92,7 @@ Otherwise, your content may not be approved at all.
 To build a new feature, check out a new branch based on the `develop` branch, and be sure to consider the following:
 
 - Choose an appropriate location for your content
-- Follow the [documentation style guide](STYLEGUIDE.md)
+- Follow the [documentation style guide](../documentation/style-guide.md)
 
 </details>
 
@@ -170,7 +172,7 @@ The following types of contribution are appropriate for a new branch:
     git checkout $BRANCH
     ```
 
-Please follow our [style guide](STYLEGUIDE.md) when you write and edit articles.
+Please follow our [style guide](../documentation/style-guide.md) when you write and edit articles.
 
 ### Validate your content
 
@@ -262,9 +264,11 @@ After writing or editing content and validating it, the next step is to push it 
 
 8. Click **Submit**
 
-Thank you :tada: We will now process your pull request. If there are any edits to make, we will ask you in the comments of the pull request you created. 
+:::success: Thank you :tada:
+We will now process your pull request. If there are any edits to make, we will ask you in the comments of the pull request you created. 
 
 You can continue pushing new changes like you did before. Any updates will appear in the pending pull request.
+:::
 </details>
 
 <br>
@@ -283,7 +287,9 @@ When creating a pull request, please follow these steps to have your contributio
 
 - A pull request can be merged only if it references an open issue
 
-    **Note:** Minor changes such as fixing a typo can but do not need an open issue.
+    :::info:
+    Minor changes such as fixing a typo can but do not need an open issue.
+    :::
 
 - All code should be well tested
 
@@ -298,7 +304,9 @@ The following is a typical workflow for submitting a new pull request:
 
 If all [status checks](https://help.github.com/articles/about-status-checks/) pass, and the maintainer approves the PR, it will be merged.
 
-**Note:** Reviewers may ask you to complete additional work, tests, or other changes before your pull request can be approved and merged.
+:::info:
+Reviewers may ask you to complete additional work, tests, or other changes before your pull request can be approved and merged.
+:::
 </details>
 
 <br>
@@ -307,4 +315,4 @@ If all [status checks](https://help.github.com/articles/about-status-checks/) pa
 <summary>Code of Conduct :clipboard:</summary>
 <br>
 
-This project and everyone participating in it is governed by the [IOTA Code of Conduct](CODE_OF_CONDUCT.md).
+This project and everyone participating in it is governed by the [IOTA Code of Conduct](../iotaledger/code-of-conduct.md).

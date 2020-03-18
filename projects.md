@@ -7,4 +7,4 @@
 [App Blueprints](/blueprints)
 [IoT Projects](/iot)
 [General](/general)
-[Contribution](/contribution)
+[Contributing](/contributing)
