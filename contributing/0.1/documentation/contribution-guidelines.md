@@ -6,22 +6,22 @@ We encourage everyone with knowledge of IOTA technology to contribute.
 
 Thanks! :heart:
 
-<details>
-<summary>Do you have a question :question:</summary>
-<br>
+
+## Do you have a question :question:
+
 
 If you have a general or technical question, you can use one of the following resources instead of submitting an issue:
 
 - [**Discord:**](https://discord.iota.org/) For communicating with the developers and community members
 - [**IOTA cafe:**](https://iota.cafe/) For discussing technical questions with the Research Department at the IOTA Foundation
 - [**StackExchange:**](https://iota.stackexchange.com/) For asking technical questions
-</details>
 
-<br>
 
-<details>
-<summary>Ways to contribute :mag:</summary>
-<br>
+
+
+
+## Ways to contribute :mag:
+
 
 To contribute, you can:
 
@@ -29,13 +29,13 @@ To contribute, you can:
 - Suggest new content
 - Write new content
 - Suggest a new documentation feature
-</details>
 
-<br>
 
-<details>
-<summary>Report a mistake :bug:</summary>
-<br>
+
+
+
+## Report a mistake :bug:
+
 
 This section guides you through reporting a typo or any type of mistake in the content. Following these guidelines helps maintainers and the community verify and and fix mistakes.
 
@@ -54,11 +54,11 @@ If you find a **Closed** issue that seems similar to what you're experiencing, o
 To report a mistake, [open a new issue](https://github.com/iotaledger/documentation/issues/new), and be sure to include as many details as possible, using the template.
 
 If you also want to fix the mistake, submit a [pull request](#pull-requests) and reference the issue.
-</details>
 
-<details>
-<summary>Suggest new content :bulb:</summary>
-<br>
+
+
+## Suggest new content :bulb:
+
 
 This section guides you through suggesting new content. Following these guidelines helps maintainers and the community collaborate to find the best possible way forward with your suggestion.
 
@@ -71,13 +71,13 @@ This section guides you through suggesting new content. Following these guidelin
 To suggest new content, talk to the IOTA community and IOTA Foundation members in the #documentation-discussion channel on [Discord](https://discord.iota.org/).
 
 If your suggestion is approved, the team will create an issue to include it.
-</details>
 
-<br>
 
-<details>
-<summary>Write new content :pencil2:</summary>
-<br>
+
+
+
+## Write new content :pencil2:
+
 
 This section guides you through writing content for the documentation portal. Following these guidelines helps give your content the best chance of being approved and merged.
 
@@ -94,25 +94,14 @@ To build a new feature, check out a new branch based on the `develop` branch, an
 - Choose an appropriate location for your content
 - Follow the [documentation style guide](../documentation/style-guide.md)
 
-</details>
-
-<br>
-
-<details>
-<summary>Suggest a new documentation feature :art:</summary>
-<br>
+## Suggest a new documentation feature
 
 To suggest new features for the documentation portal:
 
 1. Go to the [`iotaledger/documentation-platform`](https://github.com/iotaledger/documentation-platform/issues) repository
 2. If no existing issues address your suggestion, create a new issue and describe your feature idea
-</details>
 
-<br>
-
-<details>
-<summary>Get started with your first contribution :checkered_flag:</summary>
-<br>
+## Get started with your first contribution
 
 Our documentation is hosted on GitHub, which is a version control tool. To create new content, or suggest changes to existing content, you must use either Git or GitHub.
 
@@ -269,13 +258,8 @@ We will now process your pull request. If there are any edits to make, we will a
 
 You can continue pushing new changes like you did before. Any updates will appear in the pending pull request.
 :::
-</details>
 
-<br>
-
-<details>
-<summary>Pull requests :mega:</summary>
-<br>
+## Pull requests
 
 This section guides you through submitting a pull request (PR). Following these guidelines helps give your PR the best chance of being approved and merged.
 
@@ -307,12 +291,7 @@ If all [status checks](https://help.github.com/articles/about-status-checks/) pa
 :::info:
 Reviewers may ask you to complete additional work, tests, or other changes before your pull request can be approved and merged.
 :::
-</details>
 
-<br>
-
-<details>
-<summary>Code of Conduct :clipboard:</summary>
-<br>
+## Code of Conduct
 
 This project and everyone participating in it is governed by the [IOTA Code of Conduct](https://www.iota.org/contact-us/community-support).
