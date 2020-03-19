@@ -4,9 +4,7 @@ Thanks for taking the time to contribute! :heart:
 
 The following set of guidelines will help you to contribute to the repositories in the [IOTAledger organization](https://github.com/iotaledger) on GitHub.
 
-<details>
-<summary>About the IOTAledger organization</summary>
-<br>
+## About the IOTAledger organization
 
 IOTA is a large open-source project that's made up of over [100 repositories](https://github.com/iotaledger).
 
@@ -99,24 +97,14 @@ Blueprint demos are example applications of how IOTA technology can be used to s
 - [HyperLedger bridge](https://github.com/iotaledger/HyperledgerFabric-IOTA-Connector) Allows users to connect to trigger transactions on the Tangle, using HyperLedger smart contracts
 
 - [Container tracking](https://github.com/iotaledger/trade-poc) Allows users to track and trace assets in the supply chain
-</details>
 
-<br>
-
-<details>
-<summary>Getting started with your first contribution</summary>
-<br>
+## Getting started with your first contribution
 
 In the `.github` directory of each IOTAledger repository is a `CONTRIBUTING.md` file with advice for getting started.
 
 If you are unsure where to begin, you can start by looking any `beginner` or `help-wanted` issues.
-</details>
 
-<br>
-
-<details>
-<summary>Code of Conduct</summary>
-<br>
+## Code of Conduct
 
 This project and everyone participating in it is governed by the [IOTA Code of Conduct](https://www.iota.org/contact-us/community-support).
-</details>
+
