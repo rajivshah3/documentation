@@ -1,76 +1,64 @@
-# Get started with the PlatformIO integration
+# Get started with IOTA on PlatformIO
 
-**PlatformIO is an ecosystem and development platform for embedded devices. It is flexible and has a lot of helpful integrated tools for the most common IDEs. This makes it a good platform to get into more advanced embedded development**
+**PlatformIO is an ecosystem and development platform for embedded devices that comes with lots of tools for the most common integrated development environments (IDEs). In this guide, you set up PlatformIO and use it to compile, upload, and run an example IOTA application on your device.**
 
 ## Hardware
 
-To complete this guide you need an ESP32 development board. 
-You can also use a STM32F7 development board, but the guide will differ a bit for you.
-Read the [introduction into PlatformIO](#introduction-into-platformIO) carefully and 
-You can use Windows, Mac or Linux as operating system for this guide.
+To complete this guide you need the following:
+- An ESP32 or STM32F7 device that is supported by Arduino
+- A Linux, macOS, or Windows operating system
 
-## Introduction into platformIO
+In this guide, we use the Arduino framework because it is simple for beginners. However, PlatformIO supports other frameworks such as [mbed OS](https://www.mbed.com/en/platform/mbed-os/) and [Zephyr OS](https://www.zephyrproject.org/), which offer more flexibility and advanced functionality. If you want to use one of these other frameworks, see our [examples](#example-applications).
 
-In order to be able to follow this guide, you need to understand platformIO a bit.
-PlatformIO is a development ecosystem for several different frameworks, IDEs and boards.
-Therefore it is highly flexible to adapt to different environments.
+To check if your device is supported by Arduino, [search for it on the PlatformIO website](https://platformio.org/boards), and make sure that the Frameworks column includes Arduino.
 
-When you start your project, it needs to get initialized for your specific board and IDE.
-If you don't use Visual Studio Code, make sure to [follow the documentation](https://docs.platformio.org/en/latest/integration/ide/index.html) 
-for your IDE before you start following the guide.
-PlatformIO supports different frameworks, such as the Arduino framework (part of the Arduino IDE), [mbed OS](https://www.mbed.com/en/platform/mbed-os/) or [Zephyr OS](https://www.zephyrproject.org/).
-You are free to choose the framework you are going to use. Arduino is the most simple one, while RTOS based frameworks (such as mbed or Zephyr)
-give you more flexibility and advanced functionality. We are going to focus our guides on the Arduino framework, if possible.
-Not all boards and microcontroller are supported by all frameworks. To check, if your board supports Arduino, you
-need to [search for your specific board](https://platformio.org/boards). 
-The column framework lists all available frameworks for your board.
-If you are going to use another framework than Arduino, please check the [documentation for your framework](https://docs.platformio.org/en/latest/frameworks/index.html#frameworks) before.
-The structure of the code will differ from the structure used in our guides.
-We have some [examples](#example-applications) available for different frameworks.
+![PlatformIO device search](../images/platformio-board-search.png)
 
-## Step 1. Install platformIO
+## Step 1. Set up a development environment
 
-[Install platformIO](https://platformio.org/install) for your operating system and your IDE.
-If you don't have an IDE yet, we recommend to use [Visual Studio Code.](https://code.visualstudio.com/)
-It is a free and [open source IDE](https://github.com/Microsoft/vscode), written in Typescript.
+In this step, you install the necessary tools to start developing applications with PlatformIO.
 
-## Step 2. Install the platformIO plugin
+1. Install [Visual Studio Code](https://code.visualstudio.com/)
 
-If you use the Visual Studio Code, you need to install the [platformIO plugin for it.](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide)
+    We use Visual Studio Code in this guide because it's free and [open source](https://github.com/Microsoft/vscode)
 
-## Step 3. Create your project
+2. Install the [PlatformIO extension](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) for Visual Studio Code
 
-Open Visual Studio Code and [create your project](https://docs.platformio.org/en/latest/integration/ide/vscode.html#setting-up-the-project).
-Give your project a name, select `Arduino` as framework and select the board you are going to use.
-If you are not sure which board you need to select, 
-there is a [web based board search](https://platformio.org/boards) with more filters.
+3. Open Visual Studio Code and [create your project](https://docs.platformio.org/en/latest/integration/ide/vscode.html#setting-up-the-project).
 
-## Step 4. Add iota as dependency to your platformio.ini file
+4. Give your project a name, select `Arduino` as the framework, and select the board you are going to use
 
-Edit the `platformio.ini` file and add the following to the start of it:
-```
-[external_libs]
-lib_deps_external =
-    https://github.com/oopsmonk/iota_common.git#pio_lib
-    https://github.com/troydhanson/uthash.git#1124f0a70b0714886402c3c0df03d037e3c4d57a
-    https://github.com/oopsmonk/XKCP.git#pio_keccakp1600
-```
+If you don't use Visual Studio Code, make sure to [follow the documentation](https://docs.platformio.org/en/latest/integration/ide/index.html) for your IDE before you start following the guide.
 
-After the board definition, you have to add the following:
+## Step 2. Add IOTA as a dependency to your project
 
-```
-build_flags =
-    -I${PROJECT_LIBDEPS_DIR}/${PIOENV}/Keccak/lib/common
-    -I${PROJECT_LIBDEPS_DIR}/${PIOENV}/Keccak/lib/high/Keccak
-    -I${PROJECT_LIBDEPS_DIR}/${PIOENV}/Keccak/lib/high/Keccak/FIPS202
-    -I${PROJECT_LIBDEPS_DIR}/${PIOENV}/Keccak/lib/low/KeccakP-1600/Reference
+In this step, you add the [IOTA C client library](https://github.com/iotaledger/iota.c) to your project.
 
-; Library options
-lib_deps =
-    ${external_libs.lib_deps_external}
-```
+1. Open the `platformio.ini` file and add the following below the `; https://docs.platformio.org/page/projectconf.html` line:
 
-Your `platformio.ini` file has to look similar to this one. The board might differ.
+    ```
+    [external_libs]
+    lib_deps_external =
+        https://github.com/oopsmonk/iota_common.git#pio_lib
+        https://github.com/troydhanson/uthash.git#1124f0a70b0714886402c3c0df03d037e3c4d57a
+        https://github.com/oopsmonk/XKCP.git#pio_keccakp1600
+    ```
+
+2. Below the `framework = arduino` line, add the following:
+
+    ```
+    build_flags =
+        -I${PROJECT_LIBDEPS_DIR}/${PIOENV}/Keccak/lib/common
+        -I${PROJECT_LIBDEPS_DIR}/${PIOENV}/Keccak/lib/high/Keccak
+        -I${PROJECT_LIBDEPS_DIR}/${PIOENV}/Keccak/lib/high/Keccak/FIPS202
+        -I${PROJECT_LIBDEPS_DIR}/${PIOENV}/Keccak/lib/low/KeccakP-1600/Reference
+
+    ; Library options
+    lib_deps =
+        ${external_libs.lib_deps_external}
+    ```
+
+Your `platformio.ini` file should look similar to the following:
 
 ```
 [external_libs]
@@ -95,52 +83,64 @@ lib_deps =
     ${external_libs.lib_deps_external}
 ```
 
-## Step 5. Start developing
+## Step 3. Test PlatformIO
 
-You can find the source code in the `src` directory.
-It supports the commonly known structure of the Arduino IDE. There are two functions `setup()` and `loop()`.
-If you already have an application written in the Arduino IDE, you are able to port it to PlatformIO in a few steps.
-Check out the [Arduino example](#example-applications) to develop your application.
+In this step, you compile, upload, and run a sample program, using PlatformIO.
 
-## Step 6. Deploy your application
+1. Plug your device into your computer's USB port
 
-Once you are done with developing your application, you are able to [compile and upload](https://docs.platformio.org/en/latest/integration/ide/vscode.html#setting-up-the-project) it to your board.
-You can find two small buttons on the left bottom corner. 
-![Deploy and Upload](../images/vscode_deploy.png)
+    PlatformIO tries to automatically detect any connected devices. If PlatformIO does not recognize your device, see the [`upload_port` option](https://docs.platformio.org/en/latest/projectconf/section_env_upload.html?utm_source=platformio&utm_medium=piohome#upload-port).
 
-## Step 7. Send and receive data via serial
+2. Go to the `src` directory of your project, and open the `main.cpp` file
 
-To use the serial monitor, you have start the serial monitor in `setup()` first. The argument is the baud rate.
-Default baud rate is `9600`
+    This file includes the `setup()` and `loop()` functions, which are native to the Arduino IDE.
 
-```
-void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(9600);
-}
-```
+3. Replace the code in the `main.cpp` file with the following:
 
-You are now able to send data to the serial at any point in your `setup()` or `loop()` function.
+    ```cpp 
+    void setup()
+    {
+        Serial.begin(9600);
+    }
 
-```
-void loop() {
-  // put your main code here, to run repeatedly:
-  Serial.println("Hello World!");
-}
-```
+    void loop()
+    {
+        Serial.println("Hello world!");
+        delay(1000);
+    }
+    ```
 
-Click now on the Serial Monitor button on the bottom bar and you are able to see your output.  
+    If you already have an application written in the Arduino IDE, you can copy and paste it in this file instead.
 
-![Serial Monitor VSCode](../images/vscode_serial.png)
+4. [Compile and upload](https://docs.platformio.org/en/latest/integration/ide/vscode.html#setting-up-the-project) the code to your device
 
+    ![Deploy and Upload](../images/vscode-deploy.png)
 
-## Example applications
+5. Click the **PlatformIO: Serial Monitor** button on the bottom bar to connect to your device's serial terminal and see the output
 
-We have some example applications available for different frameworks. 
-[mbed OS](https://github.com/iota-community/iota_c_platformIO/blob/mbed_stm32f746zg/src/my_app.cpp),
-[arduino](https://github.com/iota-community/iota_c_platformIO/blob/arduino_esp32/src/main.cpp) or
-[esp-idf (freeRTOS)](https://github.com/iota-community/iota_c_platformIO/tree/esp_idf_esp32/src)
-If you need more information about the libraries API,
- check out the [iota.c API reference.](https://github.com/iotaledger/iota.c#api-reference)
+    ![Serial monitor in VSCode](../images/vscode-serial.png)
+
+## Step 4. Run the example IOTA application
+
+In this step, you run an example IOTA application that generates an address.
+
+1. Go to [GitHub](https://github.com/iota-community/iota_c_platformIO/blob/arduino_esp32/src/main.cpp) and copy the contents of the `main.cpp` file to your clipboard
+
+2. Open your `src/main.cpp` file and paste the copied content into it
+
+3. [Compile and upload](https://docs.platformio.org/en/latest/integration/ide/vscode.html#setting-up-the-project) the code to your device
+
+4. Click the **PlatformIO: Serial Monitor** button on the bottom bar to connect to your device's serial terminal and see the output
+
+You should see the default seed, followed by an address.
+
+## Next steps
+
+Try our example applications for the following frameworks:
+
+- [mbedOS](https://github.com/iota-community/iota_c_platformIO/blob/mbed_stm32f746zg/src/my_app.cpp)
+- [ESP-IDF (freeRTOS)](https://github.com/iota-community/iota_c_platformIO/tree/esp_idf_esp32/src)
+
+Use the [IOTA C client library's API](https://github.com/iotaledger/iota.c#api-reference) to expand the examples with your own ideas.
 
 
