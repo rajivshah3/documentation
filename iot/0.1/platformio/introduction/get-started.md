@@ -100,12 +100,39 @@ lib_deps =
 You can find the source code in the `src` directory.
 It supports the commonly known structure of the Arduino IDE. There are two functions `setup()` and `loop()`.
 If you already have an application written in the Arduino IDE, you are able to port it to PlatformIO in a few steps.
+Check out the [Arduino example](#example-applications) to develop your application.
 
 ## Step 6. Deploy your application
 
 Once you are done with developing your application, you are able to [compile and upload](https://docs.platformio.org/en/latest/integration/ide/vscode.html#setting-up-the-project) it to your board.
 You can find two small buttons on the left bottom corner. 
 ![Deploy and Upload](../images/vscode_deploy.png)
+
+## Step 7. Send and receive data via serial
+
+To use the serial monitor, you have start the serial monitor in `setup()` first. The argument is the baud rate.
+Default baud rate is `9600`
+
+```
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+}
+```
+
+You are now able to send data to the serial at any point in your `setup()` or `loop()` function.
+
+```
+void loop() {
+  // put your main code here, to run repeatedly:
+  Serial.println("Hello World!");
+}
+```
+
+Click now on the Serial Monitor button on the bottom bar and you are able to see your output.  
+
+![Serial Monitor VSCode](../images/vscode_serial.png)
+
 
 ## Example applications
 
