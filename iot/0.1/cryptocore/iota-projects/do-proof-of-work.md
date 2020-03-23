@@ -4,9 +4,9 @@
 
 This guide walks you through the process of writing the following scripts:
 
-- **`create_bundle.sh`:** This script creates a bundle of eight zero-value transactions without a proof of work
-- **`do_pow.sh`:** This scripts uses the CryptoCore to do proof of work for the bundle
-- **`send-bundle.js`:** This script connects to a node and sends the bundle's transactions to it
+- **`create_bundle.sh`:** Creates a bundle of eight zero-value transactions without a proof of work
+- **`do_pow.sh`:** Uses the CryptoCore to do proof of work for the bundle
+- **`send-bundle.js`:** Connects to a node and sends the bundle's transactions to it
 
 :::info:
 These code samples are also hosted on [GitHub](https://github.com/iota-community/cryptocore-scripts).

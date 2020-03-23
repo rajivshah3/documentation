@@ -4,8 +4,8 @@
 
 This guide walks you through the process of writing the following scripts:
 
-- **`create_tx.sh`:** This script uses the CryptoCore to create a zero-value transaction
-- **`send-tx.js`:** This script connects to a node and sends the transaction to it
+- **`create_tx.sh`:** Uses the CryptoCore to create a zero-value transaction
+- **`send-tx.js`:** Connects to a node and sends the transaction to it
 
 :::info:
 These code samples are also hosted on [GitHub](https://github.com/iota-community/cryptocore-scripts).

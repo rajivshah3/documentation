@@ -4,10 +4,10 @@
 
 This guide walks you through the process of writing the following scripts:
 
-- **`create-unsigned-bundle.js`:** This script creates an unsigned bundle
-- **`generate-auth.js`:** This script generates a hexadecimal-encoded hash to authenticate the `signBundleHash` command on the CryptoCore
-- **`send_value_tx.sh`:** This scripts uses the CryptoCore to sign the bundle and attach the transactions to the Tangle
-- **`add-signature-to-bundle.js`:** This script adds the signature to the bundle
+- **`create-unsigned-bundle.js`:** Creates an unsigned bundle
+- **`generate-auth.js`:** Generates a hexadecimal-encoded hash to authenticate the `signBundleHash` command on the CryptoCore
+- **`send_value_tx.sh`:** Uses the CryptoCore to sign the bundle and attach the transactions to the Tangle
+- **`add-signature-to-bundle.js`:** Adds the signature to the bundle
 
 :::info:
 These code samples are also hosted on [GitHub](https://github.com/iota-community/cryptocore-scripts).
