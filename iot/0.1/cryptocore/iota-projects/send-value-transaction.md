@@ -172,7 +172,7 @@ In this step, you write a script that uses the Javascript client library to crea
     });
     ```
 
-## Step 2. Authenticate the `signBundleHash` command
+## Step 2. Authenticate the signing command
 
 In this step, you write a script that generates the `auth` parameter for the [`signBundleHash`](../references/api-reference.md#signbundlehash) command.
 
@@ -343,8 +343,7 @@ In this step, you write a bash script that signs the bundle hash.
     By keeping track of the address index, you can be sure that you aren't generating [spent addresses](root://getting-started/0.1/clients/addresses.md#spent-addresses).
     :::
     
-
-5. Generate an input address, using the CryptoCore [`getAddress`](../references/api-reference.md#getaddress) command
+6. Generate an input address, using the CryptoCore [`getAddress`](../references/api-reference.md#getaddress) command
 
     ```bash
     # Create a generateAddress API request, using the user's answer
@@ -366,7 +365,7 @@ In this step, you write a bash script that signs the bundle hash.
     You can find the code for this file on [GitHub](https://github.com/iota-community/cryptocore-scripts/blob/master/node-scripts/serial.js).
     :::
 
-6. Ask the user for an output address into which to deposit the full balance of the input address
+7. Ask the user for an output address into which to deposit the full balance of the input address
 
     ```bash
     read -p "To which address would you like to send your IOTA tokens? " output
@@ -377,7 +376,7 @@ In this step, you write a bash script that signs the bundle hash.
     done
     ```
 
-7. Execute the `create-unsigned-bundle.js` script
+8. Execute the `create-unsigned-bundle.js` script
 
     ```bash
     # Execute the create-unsigned-bundle.js script to create an unsigned bundle from the user's input
@@ -389,7 +388,7 @@ In this step, you write a bash script that signs the bundle hash.
     fi
     ```
 
-8. Execute the `generate-auth.js` script to generate the `auth` argument and pass it to the [`signBundleHash`](../references/api-reference.md#signbundlehash) command to sign the bundle hash on the CryptoCore
+9. Execute the `generate-auth.js` script to generate the `auth` argument and pass it to the [`signBundleHash`](../references/api-reference.md#signbundlehash) command to sign the bundle hash on the CryptoCore
 
     ```bash
 
@@ -407,7 +406,7 @@ In this step, you write a bash script that signs the bundle hash.
     signature=$(node ../node-scripts/serial.js "$sign_bundle_json_string" | jq ".trytes[]" | tr -d '"' | tr -d '\n')
     ```
 
-9. Pass the signature to the `add-signature-to-bundle.js` script to add it to the bundle and attach the transactions to the Tangle
+10. Pass the signature to the `add-signature-to-bundle.js` script to add it to the bundle and attach the transactions to the Tangle
 
     ```bash
     result=$(node ../node-scripts/add-signature-to-bundle.js $MWM $signature $indexFile $saved_transaction_directory)
@@ -610,24 +609,16 @@ To improve this sample code, you could extend it to support any of the following
 
 - Use the CryptoCore to do local proof of work instead of outsourcing it to the connected node through the `sendTrytes()` method
 
-    :::info:
-    For example, you could take inspiration from the `do_pow.sh` script.
-    :::
+    For example, you could take inspiration from the [`do_pow.sh` script](https://github.com/iota-community/cryptocore-scripts/blob/master/bash-scripts/do_pow.sh).
 
 - Allow the user to choose a remainder address
 
-    :::info:
     For example, instead of transferring the whole balance of the input address to an output address, the user could transfer part of the balance and send the rest to a chosen remainder address.
-    :::
 
 - Allow the user to choose a value to send
 
-    :::info:
     For example, you may want to ask the user how much to send, then generate a certain number of addresses to see if the user has enough balance.
-    :::
 
-- Use a configuration file to define variables that are used across all the scripts
+- Instead of repeating variables in files, use a configuration file
 
-    :::info:
-    For example, you might want to define the nodes in a JSON configuration file.
-    :::
+    For example, you might want to define the Mainnet and Devnet node URLs in a JSON configuration file.
