@@ -4,29 +4,50 @@
 
 ## Hardware
 
-To complete this guide you need an ESP32 or STM32F7. 
+To complete this guide you need an ESP32 development board. 
+You can also use a STM32F7 development board, but the guide will differ a bit for you.
+Read the [introduction into PlatformIO](#introduction-into-platformIO) carefully and 
 You can use Windows, Mac or Linux as operating system for this guide.
+
+## Introduction into platformIO
+
+In order to be able to follow this guide, you need to understand platformIO a bit.
+PlatformIO is a development ecosystem for several different frameworks, IDEs and boards.
+Therefore it is highly flexible to adapt to different environments.
+
+When you start your project, it needs to get initialized for your specific board and IDE.
+If you don't use Visual Studio Code, make sure to [follow the documentation](https://docs.platformio.org/en/latest/integration/ide/index.html) 
+for your IDE before you start following the guide.
+PlatformIO supports different frameworks, such as the Arduino framework (part of the Arduino IDE), [mbed OS](https://www.mbed.com/en/platform/mbed-os/) or [Zephyr OS](https://www.zephyrproject.org/).
+You are free to choose the framework you are going to use. Arduino is the most simple one, while RTOS based frameworks (such as mbed or Zephyr)
+give you more flexibility and advanced functionality. We are going to focus our guides on the Arduino framework, if possible.
+Not all boards and microcontroller are supported by all frameworks. To check, if your board supports Arduino, you
+need to [search for your specific board](https://platformio.org/boards). 
+The column framework lists all available frameworks for your board.
+If you are going to use another framework than Arduino, please check the [documentation for your framework](https://docs.platformio.org/en/latest/frameworks/index.html#frameworks) before.
+The structure of the code will differ from the structure used in our guides.
+We have some [examples](#example-applications) available for different frameworks.
 
 ## Step 1. Install platformIO
 
 [Install platformIO](https://platformio.org/install) for your operating system and your IDE.
-If you don't have an IDE yet, we recommend to use [visual studio code.](https://code.visualstudio.com/)
+If you don't have an IDE yet, we recommend to use [Visual Studio Code.](https://code.visualstudio.com/)
 It is a free and [open source IDE](https://github.com/Microsoft/vscode), written in Typescript.
 
-## Step 2. Create your project
+## Step 2. Install the platformIO plugin
 
-Create a directory and [initialize the project](https://docs.platformio.org/en/latest/core/userguide/project/cmd_init.html).
-You can search for your board id on the [platformIO board search page.](https://platformio.org/boards)
-Just click on the name of your board to get more information and the board ID.
-Also don't forget to use the `` --ide`` option to initialize the project for your specific IDE.
-The command you use should look similar to this one: 
-```bash
-pio project init --ide clion --board esp32dev
-```
+If you use the Visual Studio Code, you need to install the [platformIO plugin for it.](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide)
 
-## Step 3. Add iota as dependency to your platformio.ini file
+## Step 3. Create your project
 
-Add the following to the start of your platformio.ini file.
+Open Visual Studio Code and [create your project](https://docs.platformio.org/en/latest/integration/ide/vscode.html#setting-up-the-project).
+Give your project a name, select `Arduino` as framework and select the board you are going to use.
+If you are not sure which board you need to select, 
+there is a [web based board search](https://platformio.org/boards) with more filters.
+
+## Step 4. Add iota as dependency to your platformio.ini file
+
+Edit the `platformio.ini` file and add the following to the start of it:
 ```
 [external_libs]
 lib_deps_external =
@@ -35,7 +56,7 @@ lib_deps_external =
     https://github.com/oopsmonk/XKCP.git#pio_keccakp1600
 ```
 
-and the following after the board definition.
+After the board definition, you have to add the following:
 
 ```
 build_flags =
@@ -49,7 +70,7 @@ lib_deps =
     ${external_libs.lib_deps_external}
 ```
 
-Your `platformio.ini` file has to look similar to this
+Your `platformio.ini` file has to look similar to this one. The board might differ.
 
 ```
 [external_libs]
@@ -74,36 +95,17 @@ lib_deps =
     ${external_libs.lib_deps_external}
 ```
 
-## Step 4. Update your development environment
-
-After adding the dependency to your `platformio.ini`, you need to update your development environment.
-Just execute the command you used in step 2 again. You might need to restart or reload your IDE. 
-For more details about the specific process of your IDE, 
-take a look into the [platformIO documentation for your IDE.](https://docs.platformio.org/en/latest/integration/ide/index.html)
-
 ## Step 5. Start developing
 
-If your board supports the Arduino environment, you are able to simply add a `main.cpp` file under the src directory.
+You can find the source code in the `src` directory.
 It supports the commonly known structure of the Arduino IDE. There are two functions `setup()` and `loop()`.
 If you already have an application written in the Arduino IDE, you are able to port it to PlatformIO in a few steps.
-Before you do so, you have to make sure that PlatformIO uses the Arduino framework environment in your project.
-Check your `platformio.ini` file. There is a framework option under the board definition.
-If it already is equal arduino `framework = arduino`, you are ready to go. If not, you have to change it to arduino. 
-Before you do so, you have to check the [board search page](https://platformio.org/boards), 
-if your board supports the arduino framework.
-
-PlatformIO has several other options, if the arduino framework is not available for your board.
-You have to [check the support of your board](https://platformio.org/boards) before. PlatformIO has [documentation for all available frameworks.](https://docs.platformio.org/en/latest/frameworks/index.html#frameworks)
 
 ## Step 6. Deploy your application
 
-Deploying your application in your IDE is quite simple. With the initialization of PlatformIO, 
-it also adds some targets to the build system in your IDE. [Check out the documentation for your IDE.](https://docs.platformio.org/en/latest/integration/ide/index.html)
-In most cases, you are able to just click the build and then the upload/program button.
-If you want to check the serial monitor of your board, you have to add the baud speed to the monitor target.
-Just add `--baud=YOUR_SPEED` as option. The baud speed is specified in your application or framework.
-Check out the [documentation page for your used framework.](https://docs.platformio.org/en/latest/frameworks/index.html#frameworks)
-
+Once you are done with developing your application, you are able to [compile and upload](https://docs.platformio.org/en/latest/integration/ide/vscode.html#setting-up-the-project) it to your board.
+You can find two small buttons on the left bottom corner. 
+![Deploy and Upload](../images/vscode_deploy.png)
 
 ## Example applications
 
