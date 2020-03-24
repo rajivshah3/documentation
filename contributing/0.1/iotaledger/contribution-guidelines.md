@@ -2,11 +2,7 @@
 
 Thanks for taking the time to contribute! :heart:
 
-The following set of guidelines will help you to contribute to the repositories in the [IOTAledger organization](https://github.com/iotaledger) on GitHub.
-
-## About the IOTAledger organization
-
-IOTA is a large open-source project that's made up of over [100 repositories](https://github.com/iotaledger).
+IOTA is a large open-source project that's made up of over [100 GitHub repositories](https://github.com/iotaledger).
 
 To help you find a repository to contribute to, this section organizes some of the most important ones into categories.
 
