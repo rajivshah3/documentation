@@ -202,9 +202,6 @@ To enhance the [Hunspell](https://en.wikipedia.org/wiki/Hunspell) spell checker,
 {
     "global": [
         "(P|p)ermission(less|ed)"
-    ],
-    "smartcity": [
-        "AstroPi"
     ]
 }
 ```

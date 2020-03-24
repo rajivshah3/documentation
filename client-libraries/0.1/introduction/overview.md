@@ -97,4 +97,4 @@ A community tool for searching transactions on the Tangle.
 
 - [MAM - High Mobility](https://github.com/iotaledger/high-mobility-blueprints) securely sending data from onboard an EV to the Tangle
 
-- [Smart City - AstroPiOTA](root://smartcity/0.1/introduction/overview.md) publishing local environment sensor data to the Tangle
+- [Smart City - AstroPiOTA](https://github.com/NelsonPython/AstroPiOTA) publishing local environment sensor data to the Tangle
