@@ -40,6 +40,8 @@
 
 [nRF52/IOTA Projects/Attach sensor data to the Tangle](/nrf52/iota-projects/run-an-environment-to-tangle-app.md)
 
+[PlatformIO/Introduction/Get started with PlatformIO](/platformio/introduction/get-started.md)
+
 [SBC/Introduction/Get started](/sbc/introduction/get-started.md)
 
 [SBC/How-to Guides/Install Go on an SBC](/sbc/how-to-guides/install-go-on-sbc.md)
