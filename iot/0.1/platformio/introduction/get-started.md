@@ -5,7 +5,10 @@
 ## Hardware
 
 To complete this guide you need the following:
-- An ESP32 or STM32F7 device that is supported by Arduino
+- A 32-bit/64-bit microcontroller device that is supported by Arduino
+:::info:
+We tested the following microcontroller: ESP32, STM32F7, nRF52832, STM32F1, Kendryte k210. 
+:::
 - A Linux, macOS, or Windows operating system
 
 In this guide, we use the Arduino framework because it is simple for beginners. However, PlatformIO supports other frameworks such as [mbed OS](https://www.mbed.com/en/platform/mbed-os/) and [Zephyr OS](https://www.zephyrproject.org/), which offer more flexibility and advanced functionality. If you want to use one of these other frameworks, see our [examples](#example-applications).
@@ -138,6 +141,7 @@ You should see the default seed, followed by an address.
 
 Try our example applications for the following frameworks:
 
+- [PlatformIO Arduino workshop](https://github.com/iota-community/platformio-arduino-iota-workshop)
 - [mbedOS](https://github.com/iota-community/iota_c_platformIO/blob/mbed_stm32f746zg/src/my_app.cpp)
 - [ESP-IDF (freeRTOS)](https://github.com/iota-community/iota_c_platformIO/tree/esp_idf_esp32/src)
 
