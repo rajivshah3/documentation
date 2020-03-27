@@ -7,7 +7,9 @@
 To complete this guide you need the following:
 - A 32-bit/64-bit microcontroller device that is supported by Arduino
 :::info:
-We tested the following microcontroller: ESP32, STM32F7, nRF52832, STM32F1, Kendryte k210. 
+Tested and full support: ESP32, STM32F407VET6, STM32F746ZG, Kendryte k210.
+Partially supported: STM32F103C6, nRF52832
+Not supported: ESP8266
 :::
 - A Linux, macOS, or Windows operating system
 
