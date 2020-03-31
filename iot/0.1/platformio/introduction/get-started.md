@@ -11,7 +11,7 @@ To complete this guide you need the following:
 ## Microcontroller support
 
 Not all devices that are supported by Arduino can be used with IOTA. For a list of restrictions, see the following table
-If your microcontroller is not listed, you can try a [workshop example](https://github.com/iota-community/platformio-arduino-iota-workshop) for your microcontroller.
+If your microcontroller is not listed, you can try the code of a [workshop example](https://github.com/iota-community/platformio-arduino-iota-workshop).
 Please post the results of your tests in the #hardware channel on the [IOTA discord](https://discord.iota.org/). 
 
 | Microcontroller | Address generation | Signatures    |
