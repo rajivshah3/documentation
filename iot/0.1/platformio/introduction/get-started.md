@@ -5,8 +5,23 @@
 ## Hardware
 
 To complete this guide you need the following:
-- An ESP32 or STM32F7 device that is supported by Arduino
+- A 32-bit/64-bit microcontroller device that is supported by Arduino
 - A Linux, macOS, or Windows operating system
+
+## Microcontroller support
+
+Not all devices that are supported by Arduino can be used with IOTA. For a list of restrictions, see the following table
+If your microcontroller is not listed, you can try the code of a [workshop example](https://github.com/iota-community/platformio-arduino-iota-workshop).
+Please post the results of your tests in the #hardware channel on the [IOTA discord](https://discord.iota.org/). 
+
+| Microcontroller | Address generation | Signatures    |
+|-----------------|--------------------|---------------|
+| ESP32           | <= level 2         | <= level 2    |
+| STM32F407VET6   | <= level 2         | <= level 2    |
+| Kendryte k210   | <= level 2         | <= level 2    |
+| STM32F103C6     | level 1            | not supported |
+| nRF52832        | level 1            | not supported |
+| ESP8266         | not supported      | not supported |
 
 In this guide, we use the Arduino framework because it is simple for beginners. However, PlatformIO supports other frameworks such as [mbed OS](https://www.mbed.com/en/platform/mbed-os/) and [Zephyr OS](https://www.zephyrproject.org/), which offer more flexibility and advanced functionality. If you want to use one of these other frameworks, see our [examples](#example-applications).
 
@@ -138,6 +153,7 @@ You should see the default seed, followed by an address.
 
 Try our example applications for the following frameworks:
 
+- [PlatformIO Arduino workshop](https://github.com/iota-community/platformio-arduino-iota-workshop)
 - [mbedOS](https://github.com/iota-community/iota_c_platformIO/blob/mbed_stm32f746zg/src/my_app.cpp)
 - [ESP-IDF (freeRTOS)](https://github.com/iota-community/iota_c_platformIO/tree/esp_idf_esp32/src)
 
