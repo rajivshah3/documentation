@@ -6,12 +6,22 @@
 
 To complete this guide you need the following:
 - A 32-bit/64-bit microcontroller device that is supported by Arduino
-:::info:
-Tested and full support: ESP32, STM32F407VET6, STM32F746ZG, Kendryte k210.
-Partially supported: STM32F103C6, nRF52832
-Not supported: ESP8266
-:::
 - A Linux, macOS, or Windows operating system
+
+## Microcontroller support
+
+Not all devices that are supported by Arduino can be used with IOTA. For a list of restrictions, see the following table
+If your microcontroller is not listed, you can try a [workshop example](https://github.com/iota-community/platformio-arduino-iota-workshop) for your microcontroller.
+Please post the results of your tests in the #hardware channel on the [IOTA discord](https://discord.iota.org/). 
+
+| Microcontroller | Address generation | Signatures    |
+|-----------------|--------------------|---------------|
+| ESP32           | <= level 2         | <= level 2    |
+| STM32F407VET6   | <= level 2         | <= level 2    |
+| Kendryte k210   | <= level 2         | <= level 2    |
+| STM32F103C6     | level 1            | not supported |
+| nRF52832        | level 1            | not supported |
+| ESP8266         | not supported      | not supported |
 
 In this guide, we use the Arduino framework because it is simple for beginners. However, PlatformIO supports other frameworks such as [mbed OS](https://www.mbed.com/en/platform/mbed-os/) and [Zephyr OS](https://www.zephyrproject.org/), which offer more flexibility and advanced functionality. If you want to use one of these other frameworks, see our [examples](#example-applications).
 
