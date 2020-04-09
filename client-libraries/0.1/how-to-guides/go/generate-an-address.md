@@ -32,7 +32,7 @@ In this guide, we connect to a [node](root://getting-started/0.1/network/nodes.m
 2. Connect to a node
 
     ```go
-    var node = "https://nodes.devnet.thetangle.org"
+    var node = "https://nodes.devnet.iota.org"
     api, err := ComposeAPI(HTTPClientSettings{URI: node})
     must(err)
     ```
