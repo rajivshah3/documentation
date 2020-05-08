@@ -33,7 +33,7 @@ This is the content in tab page 2.
 The h3 heading is the tab label.
 :::
 
-![Tabbed Control](/contribution/0.1/images/tabbed-control.png)
+![Tabbed Control](/contributing/0.1/images/tabbed-control.png)
 
 ### Cards
 
@@ -49,7 +49,7 @@ Data silos make it difficult to buy and sell data among different data points. T
 -------------------------
 ```
 
-![Cards](/contribution/0.1/images/card.png)
+![Cards](/contributing/0.1/images/card.png)
 
 ### Colored headings
 
@@ -63,9 +63,9 @@ To create a colored heading, use the following syntax:
 ### __COMMUNITY SUPPORT__ ###
 ```
 
-![Heading Label](/contribution/0.1/images/heading-label-primary.png)
+![Heading Label](/contributing/0.1/images/heading-label-primary.png)
 
-![Heading Label](/contribution/0.1/images/heading-label-secondary.png)
+![Heading Label](/contributing/0.1/images/heading-label-secondary.png)
 
 ### Colored bullets
 
@@ -88,7 +88,7 @@ Excepteur sint occaecat cupidatat non proident, sunt in culpa qui.
 ---------------
 ```
 
-![Project Topics](/contribution/0.1/images/project-topics.png)
+![Project Topics](/contributing/0.1/images/project-topics.png)
 
 ### Emoji
 
