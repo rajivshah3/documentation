@@ -6,6 +6,8 @@
 
 [Account module](root://account-module/1.0/overview.md)
 
+[Channels](root://channels/1.0/overview.md)
+
 [IOTA area codes](root://iota-area-codes/1.0/overview.md)
 
 [Client load balancer](root://load-balancer/1.0/overview.md)
