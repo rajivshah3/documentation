@@ -1,8 +1,6 @@
 [Getting Started](/getting-started)
 [Client Libraries](/client-libraries)
-[Streams](/iota-streams)
 [Account module](/account-module)
-[Channels](/channels)
 [IOTA area codes](/iota-area-codes)
 [Client load balancer](/load-balancer)
 [Proof of existence](/proof-of-existence)
