@@ -1,6 +1,6 @@
 # Listen to events in an account in JavaScript
 
-**An account object emits events when they happen. An example of an event is when you make or receive a payment. In this tutorial, you listen for these events and log them to the console.**
+**An account object emits events when they happen. An example of an event is when you make or receive a payment. In this guide, you listen for these events and log them to the console.**
 
 ## Packages
 
@@ -20,7 +20,7 @@ yarn add @iota/account ntp-client
 
 ## IOTA network
 
-In this tutorial, we connect to a node on the [Devnet](root://getting-started/0.1/network/iota-networks.md#devnet).
+In this guide, we connect to a node on the [Devnet](root://getting-started/0.1/network/iota-networks.md#devnet).
 
 ## Code walkthrough
 

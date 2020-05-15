@@ -1,6 +1,6 @@
 # Create an account in JavaScript
 
-**In this tutorial, you create an account to keep track of your seed state in a local database and learn how to display your available balance.**
+**In this guide, you create an account to keep track of your seed state in a local database and learn how to display your available balance.**
 
 ## Packages
 
@@ -20,7 +20,7 @@ yarn add @iota/account ntp-client
 
 ## IOTA network
 
-In this tutorial, we connect to a node on the [Devnet](root://getting-started/0.1/network/iota-networks.md#devnet) with the following network settings:
+In this guide, we connect to a node on the [Devnet](root://getting-started/0.1/network/iota-networks.md#devnet) with the following network settings:
 
 - **[Minimum weight magnitude](root://getting-started/0.1/network/minimum-weight-magnitude.md)**: 9
 
@@ -133,7 +133,9 @@ You've created an account that will automatically promote and reattach transacti
 
 These code samples are hosted on [GitHub](https://github.com/iota-community/account-module).
 
-To get started you need [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Node.js](https://nodejs.org/en/download/) installed on your device.
+To get started you need [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed on your device.
+
+If you don't have a JavaScript development environment, or if this is your first time using the JavaScript client library, complete our [getting started guide](../../getting-started/js-quickstart.md).
 
 In the command-line, do the following:
 

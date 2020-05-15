@@ -4,19 +4,19 @@
 
 ---------------
 #### **C** ####
-[Link](../getting-started/c-quickstart.md)
+[Link](root://client-libraries/0.1/getting-started/c-quickstart.md)
 ---
 #### **Go** ####
-[Link](../getting-started/go-quickstart.md)
+[Link](root://client-libraries/0.1/getting-started/go-quickstart.md)
 ---
 #### **Java** ####
-[Link](../getting-started/java-quickstart.md)
+[Link](root://client-libraries/0.1/getting-started/java-quickstart.md)
 ---
 #### **JavaScript** ####
-[Link](../getting-started/js-quickstart.md)
+[Link](root://client-libraries/0.1/getting-started/js-quickstart.md)
 ---
 #### **Python** ####
-[Link](../getting-started/python-quickstart.md)
+[Link](root://client-libraries/0.1/getting-started/python-quickstart.md)
 ---------------
 
 :::info:Not a developer?

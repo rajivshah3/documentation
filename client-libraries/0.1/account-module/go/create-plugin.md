@@ -1,6 +1,6 @@
 # Create an account plugin in Go
 
-**Plugins extend the functionality of an account. In this tutorial, you create a plugin that prints your account's events to the console.**
+**Plugins extend the functionality of an account. In this guide, you create a plugin that prints your account's events to the console.**
 
 ## Packages
 
@@ -19,7 +19,7 @@ go get github.com/iotaledger/iota.go/account/event/listener
 
 ## IOTA network
 
-In this tutorial, we connect to a node on the [Devnet](root://getting-started/0.1/network/iota-networks.md#devnet).
+In this guide, we connect to a node on the [Devnet](root://getting-started/0.1/network/iota-networks.md#devnet).
 
 ## Step 1. Create the event logger
 
@@ -168,7 +168,9 @@ Now, when your account starts, you don't have to do anything to listen to events
 
 These code samples are hosted on [GitHub](https://github.com/iota-community/account-module).
 
-To get started you need [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Go](https://golang.org/doc/install) installed on your device.
+To get started you need [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed on your device.
+
+If you don't have a Go development environment, or if this is your first time using the Go client library, complete our [getting started guide](../../getting-started/go-quickstart.md).
 
 In the command-line, do the following:
 

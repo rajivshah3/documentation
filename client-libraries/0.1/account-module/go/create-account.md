@@ -1,6 +1,6 @@
 # Create an account in Go
 
-**In this tutorial, you create an account to keep track of your seed state in a local database and print your account's balance to the console.**
+**In this guide, you create an account to keep track of your seed state in a local database and print your account's balance to the console.**
 
 ## Packages
 
@@ -16,7 +16,7 @@ go get github.com/iotaledger/iota.go/trinary
 
 ## IOTA network
 
-In this tutorial, we connect to a node on the [Devnet](root://getting-started/0.1/network/iota-networks.md#devnet) with the following network settings:
+In this guide, we connect to a node on the [Devnet](root://getting-started/0.1/network/iota-networks.md#devnet) with the following network settings:
 
 - **[Minimum weight magnitude](root://getting-started/0.1/network/minimum-weight-magnitude.md)**: 9
 
@@ -130,7 +130,9 @@ You've created an account that will automatically promote and reattach transacti
 
 These code samples are hosted on [GitHub](https://github.com/iota-community/account-module).
 
-To get started you need [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Go](https://golang.org/doc/install) installed on your device.
+To get started you need [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed on your device.
+
+If you don't have a Go development environment, or if this is your first time using the Go client library, complete our [getting started guide](../../getting-started/go-quickstart.md).
 
 In the command-line, do the following:
 

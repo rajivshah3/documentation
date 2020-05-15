@@ -1,10 +1,10 @@
 # Send a "hello world" transaction in Java
 
-**In this tutorial, you send a "hello world" message in a zero-value [transaction](root://getting-started/0.1/transactions/transactions.md). These transactions are useful for storing messages on the [Tangle](root://getting-started/0.1/network/the-tangle.md) without having to send any [IOTA tokens](root://getting-started/0.1/clients/token.md).**
+**In this guide, you send a "hello world" message in a zero-value [transaction](root://getting-started/0.1/transactions/transactions.md). These transactions are useful for storing messages on the [Tangle](root://getting-started/0.1/network/the-tangle.md) without having to send any [IOTA tokens](root://getting-started/0.1/clients/token.md).**
 
 ## IOTA network
 
-In this tutorial, we connect to a [node](root://getting-started/0.1/network/nodes.md) on the [Devnet](root://getting-started/0.1/network/iota-networks.md#devnet) with the following network settings:
+In this guide, we connect to a [node](root://getting-started/0.1/network/nodes.md) on the [Devnet](root://getting-started/0.1/network/iota-networks.md#devnet) with the following network settings:
 
 - **[Minimum weight magnitude](root://getting-started/0.1/network/minimum-weight-magnitude.md)**: 9
 
@@ -32,7 +32,7 @@ In this tutorial, we connect to a [node](root://getting-started/0.1/network/node
     ```java
     IotaAPI api = new IotaAPI.Builder()
             .protocol("https")
-            .host("nodes.devnet.thetangle.org")
+            .host("nodes.devnet.iota.org")
             .port(443)
             .build();
     ```
@@ -121,7 +121,7 @@ These code samples are hosted on [GitHub](https://github.com/iota-community/java
 
 To get started you need [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed on your device.
 
-You also need a Java development environment that uses the [Maven](https://maven.apache.org/download.cgi) build tool.
+You also need a Java development environment that uses the [Maven](https://maven.apache.org/download.cgi) build tool. If this is your first time using the Java client library, complete our [getting started guide](../../getting-started/java-quickstart.md), and follow the instructions for installing the library with Maven.
 
 In the command-line, do the following:
 

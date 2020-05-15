@@ -1,6 +1,6 @@
 # Import/export an existing seed state in Go
 
-**When you use your account to make payments, your account updates your seed state. In this tutorial, you learn how to export your account's seed state so that you can import it on another device or simply back it up.**
+**When you use your account to make payments, your account updates your seed state. In this guide, you learn how to export your account's seed state so that you can import it on another device or simply back it up.**
 
 ## Packages
 
@@ -16,7 +16,7 @@ go get github.com/iotaledger/iota.go/api
 
 ## IOTA network
 
-In this tutorial, we connect to a node on the [Devnet](root://getting-started/0.1/network/iota-networks.md#devnet).
+In this guide, we connect to a node on the [Devnet](root://getting-started/0.1/network/iota-networks.md#devnet).
 
 ## Step 1. Export your seed state
 
@@ -104,7 +104,9 @@ You've learned how to export and import your seed state.
 
 These code samples are hosted on [GitHub](https://github.com/iota-community/account-module).
 
-To get started you need [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Go](https://golang.org/doc/install) installed on your device.
+To get started you need [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed on your device.
+
+If you don't have a Go development environment, or if this is your first time using the Go client library, complete our [getting started guide](../../getting-started/go-quickstart.md).
 
 In the command-line, do the following:
 

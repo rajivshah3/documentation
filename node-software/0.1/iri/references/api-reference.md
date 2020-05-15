@@ -10,7 +10,6 @@ All the following commands must include an HTTP header.
 | Content-Type | application/json | Optional |
 | Authorization  | Bearer {token} | Optional  |
 
-
 :::warning:
 This API is in beta and subject to change. We recommend that you don't use this API in production applications.
 :::
