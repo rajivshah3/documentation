@@ -1,6 +1,6 @@
 # Check the balance of an address in Java
 
-**In this tutorial, you request the balance of [IOTA tokens](root://getting-started/0.1/clients/token.md) on [addresses](root://getting-started/0.1/clients/addresses.md) from a [node](root://getting-started/0.1/network/nodes.md).**
+**In this guide, you request the balance of [IOTA tokens](root://getting-started/0.1/clients/token.md) on [addresses](root://getting-started/0.1/clients/addresses.md) from a [node](root://getting-started/0.1/network/nodes.md).**
 
 ## Packages
 
@@ -13,7 +13,7 @@ go get github.com/iotaledger/iota.go/trinary
 
 ## IOTA network
 
-In this tutorial, we connect to a node on the [Devnet](root://getting-started/0.1/network/iota-networks.md#devnet).
+In this guide, we connect to a node on the [Devnet](root://getting-started/0.1/network/iota-networks.md#devnet).
 
 ## Code walkthrough
 
@@ -31,7 +31,7 @@ In this tutorial, we connect to a node on the [Devnet](root://getting-started/0.
 2. Connect to a node
 
     ```go
-    var node = "https://nodes.devnet.thetangle.org"
+    var node = "https://nodes.devnet.iota.org"
     api, err := ComposeAPI(HTTPClientSettings{URI: node})
     must(err)
     ```

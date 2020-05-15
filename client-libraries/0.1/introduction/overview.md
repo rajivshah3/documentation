@@ -1,4 +1,4 @@
-# Client libraries
+# Client libraries overview
 
 **The IOTA client libraries make it easy for you to integrate IOTA into your own applications. Use them to create, send, receive, and request transactions.**
 

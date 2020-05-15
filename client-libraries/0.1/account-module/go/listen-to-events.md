@@ -1,8 +1,8 @@
 # Listen to account events in Go
 
-**An account object emits events when they happen. An example of an event is when you make or receive a payment. In this tutorial, you listen for these events and log them to the console.**
+**An account object emits events when they happen. An example of an event is when you make or receive a payment. In this guide, you listen for these events and log them to the console.**
 
-Accounts have two types of listeners: One that uses channels and one that uses callbacks. In this tutorial, we use callback listeners. If you're interested in using a channel listener, see our guide for [creating an event-listener plugin](../go/create-plugin.md).
+Accounts have two types of listeners: One that uses channels and one that uses callbacks. In this guide, we use callback listeners. If you're interested in using a channel listener, see our guide for [creating an event-listener plugin](../go/create-plugin.md).
 
 ## Packages
 
@@ -19,7 +19,7 @@ go get github.com/iotaledger/iota.go/account
 
 ## IOTA network
 
-In this tutorial, we connect to a node on the [Devnet](root://getting-started/0.1/network/iota-networks.md#devnet).
+In this guide, we connect to a node on the [Devnet](root://getting-started/0.1/network/iota-networks.md#devnet).
 
 ## Code walkthrough
 

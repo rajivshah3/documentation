@@ -1,6 +1,6 @@
 # Make payments with your account in Go
 
-**In this tutorial, you use your account to deposit IOTA tokens into a pre-defined conditional deposit address (CDA).**
+**In this guide, you use your account to deposit IOTA tokens into a pre-defined conditional deposit address (CDA).**
 
 ## Packages
 
@@ -18,7 +18,7 @@ go get github.com/iotaledger/iota.go/api
 
 ## IOTA network
 
-In this tutorial, we connect to a node on the [Devnet](root://getting-started/0.1/network/iota-networks.md#devnet).
+In this guide, we connect to a node on the [Devnet](root://getting-started/0.1/network/iota-networks.md#devnet).
 
 ## Step 1. Create an oracle
 
@@ -97,7 +97,9 @@ Your account will [reattach and promote](root://getting-started/0.1/transactions
 
 These code samples are hosted on [GitHub](https://github.com/iota-community/account-module).
 
-To get started you need [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Go](https://golang.org/doc/install) installed on your device.
+To get started you need [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed on your device.
+
+If you don't have a Go development environment, or if this is your first time using the Go client library, complete our [getting started guide](../../getting-started/go-quickstart.md).
 
 In the command-line, do the following:
 

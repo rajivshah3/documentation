@@ -1,6 +1,6 @@
 # Generate an address in Go
 
-**In this tutorial, you learn how to generate a new address for a [seed](root://getting-started/0.1/clients/seeds.md) with a given [security level](root://getting-started/0.1/clients/security-levels.md).**
+**In this guide, you learn how to generate a new address for a [seed](root://getting-started/0.1/clients/seeds.md) with a given [security level](root://getting-started/0.1/clients/security-levels.md).**
 
 ## Packages
 
@@ -13,7 +13,7 @@ go get github.com/iotaledger/iota.go/trinary
 
 ## IOTA network
 
-In this tutorial, we connect to a [node](root://getting-started/0.1/network/nodes.md) on the [Devnet](root://getting-started/0.1/network/iota-networks.md#devnet).
+In this guide, we connect to a [node](root://getting-started/0.1/network/nodes.md) on the [Devnet](root://getting-started/0.1/network/iota-networks.md#devnet).
 
 ## Code walkthrough
 
@@ -32,7 +32,7 @@ In this tutorial, we connect to a [node](root://getting-started/0.1/network/node
 2. Connect to a node
 
     ```go
-    var node = "https://nodes.devnet.thetangle.org"
+    var node = "https://nodes.devnet.iota.org"
     api, err := ComposeAPI(HTTPClientSettings{URI: node})
     must(err)
     ```

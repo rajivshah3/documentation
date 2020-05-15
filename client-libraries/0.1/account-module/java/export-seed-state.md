@@ -1,10 +1,10 @@
 # Import/export an existing seed state in Java
 
-**When you use your account to make payments, your account updates your seed state. In this tutorial, you learn how to export your account's seed state so that you can import it on another device or simply back it up.**
+**When you use your account to make payments, your account updates your seed state. In this guide, you learn how to export your account's seed state so that you can import it on another device or simply back it up.**
 
 ## IOTA network
 
-In this tutorial, we connect to a node on the [Devnet](root://getting-started/0.1/network/iota-networks.md#devnet).
+In this guide, we connect to a node on the [Devnet](root://getting-started/0.1/network/iota-networks.md#devnet).
 
 ## Code walkthrough
 
@@ -74,7 +74,7 @@ These code samples are hosted on [GitHub](https://github.com/iota-community/acco
 
 To get started you need [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) installed on your device.
 
-You also need a Java development environment that uses the [Maven](https://maven.apache.org/download.cgi) build tool.
+You also need a Java development environment that uses the [Maven](https://maven.apache.org/download.cgi) build tool. If this is your first time using the Java client library, complete our [getting started guide](../../getting-started/java-quickstart.md), and follow the instructions for installing the library with Maven.
 
 In the command-line, do the following:
 
