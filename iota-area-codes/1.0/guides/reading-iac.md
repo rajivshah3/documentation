@@ -22,6 +22,6 @@ For example, the latitude and longitude coordinates of the address of the IOTA F
 
 ## Querying large areas
 
-The original [Open Location Codes](https://en.wikipedia.org/wiki/Open_Location_Code) (OLC) protocol is able to accurately represent areas on the globe by using 5 pairs of characters. Each pair of characters representS a 400 times increase in accuracy. A side effect of the code being determined by a set of pairs, rather than a unique code, is you can vary the accuracy by removing pairs from right to left.
+The original [Open Location Codes](https://en.wikipedia.org/wiki/Open_Location_Code) (OLC) protocol is able to accurately represent areas on the globe by using 5 pairs of characters. Each pair of characters represents a 400 times increase in accuracy. A side effect of the code being determined by a set of pairs, rather than a unique code, is you can vary the accuracy by removing pairs from right to left.
 
 For example, by querying for all tags that start with `NPHT`, you can find all transactions in a 100 km by 100 km area, covering Berlin and parts of Potsdam. Then, by adding an extra pair of trytes, `NPHTQO`, you can find all transactions within a few suburbs in central/north Berlin.
